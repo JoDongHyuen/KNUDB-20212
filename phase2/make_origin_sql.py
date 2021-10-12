@@ -9,7 +9,7 @@ country = ['한국', '한국','한국','한국','한국','한국','한국','중�
 for i in range(1, 797):
     k=random.randrange(0, len(country))
 
-    ff.write("insert into origin values ('" + str(i))
-    ff.write("', " + country[k])
+    ff.write("insert into origin values (" + str(i))
+    ff.write(", '" + country[k])
     ff.write("');\n")
     
