@@ -15,7 +15,7 @@ for line in rdr:
 for i in range(1194):
     #sql = "insert into beverage (B_BRNO, DRINKID, ALCOHOL, DRINKNAME) values (:1, :2, :3, :4)"
 
-    score = random.randrange(2, 10) * 0.5
+    score = random.randrange(2, 11) * 0.5
     if(i%3 == 0):
         count += 1
 

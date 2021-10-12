@@ -17,7 +17,7 @@ for line in rdr:
 for i in range(len(food)):
 #    sql = "insert into food values (:1, :2, :3, :4)"
     num = num + 1
-    price = random.randrange(10, 100) * 500
+    price = random.randrange(10, 101) * 500
     
     if i%2==0:
         count = count + 1
