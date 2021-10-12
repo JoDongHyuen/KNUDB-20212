@@ -58,7 +58,7 @@ create table owner(
     Lname varchar2(4),
     Phone_number varchar2(11),
     Owner_email varchar2(50) not null unique,
-    Sex char not null,
+    Sex varchar2(10) not null,
     Age number not null, 
     constraint pk_owner primary key(Bnum, Owner_email)
 );
