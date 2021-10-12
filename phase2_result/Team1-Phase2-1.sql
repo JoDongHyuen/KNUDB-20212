@@ -32,7 +32,7 @@ create table rating(
 
 create table food(
     Bnum number not null references store(Breg_number),
-    Id number not null unique,
+    Id number primary key,
     Price number not null,
     Food_name varchar2(50) not null
 );
