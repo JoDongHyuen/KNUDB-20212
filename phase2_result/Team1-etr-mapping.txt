@@ -1,0 +1,17 @@
+STORE를 중심으로 er-diagram이 구성되어 있기 때문에 STORE를 먼저 RELATIONAL MODEL에 그려두었습니다. 
+
+CUSTOMER 와 STORE 사이의 1by1-mapping 관계에서 3가지 방법중에 3번째 방법인 새로운 relation U (여기서는 CUST_BOOKS_STR) 를 만들어 그것의 foreign key를 C_Email 과 BrNumber 로 두어 CUSTOMER의 CustomerEmail 과 STORE의 BREGnumber 를 primary key 로 참조하게 구상하였습니다.
+
+CUSTOMER 과 RATING의 관계는 1 : N 관계입니다. 따라서 RATING 의 foreign key인 Cust_Email 가 CUSTOMER의 primary key인 customerEmail 을 참조하도록 설정하였습니다.
+
+FOOD 는 STORE과 1 : N 관계를 이루고 있기 때문에 FOOD 의 의 foreign key인 BrNum 가 CUSTOMER의 primary key인 BREGnumber 을 참조하도록 설정하였습니다.
+
+ORIGIN_COUNTRY 는 FOOD 의 weak entity type 입니다. 따라서 OrgFoodId 를 FoodId 를 참조하는 foreign key 로 설정하였습니다.
+
+BEVERAGE 는 STORE과 1 : N 관계를 이루고 있기 때문에 BEVERAGE 의 의 foreign key인 B_brno 가 CUSTOMER의 primary key인 BREGnumber 을 참조하도록 설정하였습니다.
+
+OWNER 와 STORE 는 OWNER 에 foreign key STR_brn 을 만들어 STORE 의 BREGnumber를 primary key 로 참조하도록 설정하였습니다.
+
+STORE 의 attribute 인 KindsOfFood 는 제거하였습니다.
+
+전반적인 attributes 의 이름의 가독성을 높이는 방향으로 바꾸었습니다.
