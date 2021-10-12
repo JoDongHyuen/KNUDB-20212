@@ -17,11 +17,11 @@ ff = open('C:/Users/Boat/Desktop/ㅈㅂ/데이터베이스/팀프/cust_books_str
 rdr = csv.reader(f)
 
 email = []
-starttime='2021/09/30 1:00 AM'
-endtime = '2021/10/12 9:00 PM'
+starttime='2021/09/30 1:00'
+endtime = '2021/10/12 9:00'
 
-d1 = datetime.datetime.strptime(starttime, '%Y/%m/%d %I:%M %p')
-d2 = datetime.datetime.strptime(endtime, '%Y/%m/%d %I:%M %p')
+d1 = datetime.datetime.strptime(starttime, '%Y/%m/%d %I:%M')
+d2 = datetime.datetime.strptime(endtime, '%Y/%m/%d %I:%M')
 
 for line in rdr:
     email.append(line[2])
@@ -36,5 +36,5 @@ for i in range(len(email) - 1):
 
         ff.write("insert into cust_books_str values ('" + email[i+1])
         ff.write("', " + str(rand_bnum))
-        ff.write(", '" + str(r_date))
-        ff.write("');\n")
+        ff.write(", TO_DATE('" + str(r_date))
+        ff.write("', 'YYYY-MM-DD HH24:MI:SS'));\n")
