@@ -56,7 +56,7 @@ create table owner(
     Bnum number not null references store(breg_number),
     Fname varchar2(2),
     Lname varchar2(4),
-    Phone_number varchar2(11),
+    Phone_number varchar2(15),
     Owner_email varchar2(50) not null unique,
     Sex varchar2(10) not null,
     Age number not null, 
