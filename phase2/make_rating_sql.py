@@ -25,8 +25,8 @@ for i in range(len(email)-1):
         score = random.randrange(2, 11) * 0.5
 
         ff.write("insert into rating values (" + str(bnum))
-        ff.write(", " + email[i+1])
-        ff.write(", " + str(score))
+        ff.write(", '" + email[i+1])
+        ff.write("', " + str(score))
         ff.write(", " + str(count))
         ff.write(");\n")
 
