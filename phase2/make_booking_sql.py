@@ -1,6 +1,5 @@
 import csv
 import random
-import cx_Oracle
 import os
 import datetime
 
@@ -29,10 +28,10 @@ for line in rdr:
 
 for i in range(len(email) - 1):
 #    sql = "insert into cust_books_str values (:1, :2, :3, :4)"
-    n = random.randrange(0, 2)#0에서 2개
+    n = random.randrange(0, 3)#0에서 2개
 
     for j in range(n):
-        rand_bnum = random.randrange(1, 398)
+        rand_bnum = random.randrange(1, 399)
         r_date = random_date(d1, d2)
 
         ff.write("insert into cust_books_str values ('" + email[i+1])
