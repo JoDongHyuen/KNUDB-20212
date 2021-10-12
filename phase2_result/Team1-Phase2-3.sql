@@ -167,9 +167,7 @@ WHERE NOT EXISTS(
         SELECT F.Id
         FROM  FOOD F
         WHERE F.Bnum = S.Breg_number
-        
         MINUS
-        
         SELECT O.Id
         FROM ORIGIN O
         WHERE O.Country_name = 'ÇÑ±¹'
@@ -183,9 +181,7 @@ WHERE NOT EXISTS(
         FROM  BEVERAGE B
         WHERE B.Bnum = S.Breg_number
         AND B.Alcohol = 'Y'
-        
         MINUS
-        
         SELECT E.Id
         FROM BEVERAGE E
         WHERE E.Alcohol = 'Y'
