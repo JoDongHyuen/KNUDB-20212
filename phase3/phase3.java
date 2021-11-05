@@ -102,12 +102,14 @@ public class phase3 {
 				stmt = conn.createStatement();
 				PreparedStatement pstmt = null;
 				
-				System.out.println("INSERT할 TABLE을 입력해주세요");
+				System.out.println("INSERT할 TABLE을 입력해주세요. 종료를 원한다면 0을 입력하세요");
 				System.out.println("(1. CUSTOMER, 2. STORE, 3. CUST_BOOKS_STR, 4. FOOD, 5. ORIGIN, 6. BEVERAGE, 7. OWNER, 8. RATING)");
 				int table = scan.nextInt();
-				System.out.println(table);
 				
-				if(table == 1) {
+				if(table == 0)
+					break;
+				
+				else if(table == 1) {
 					System.out.println("이름의 성을 입력해주세요.");
 					String fname = scan.next();
 					System.out.println("이름을 입력해주세요.");
@@ -125,7 +127,7 @@ public class phase3 {
 					int res = stmt.executeUpdate(sql);
 				}
 				
-				if(table == 2) {
+				else if(table == 2) {
 					System.out.println("가게 등록 번호를 입력해주세요.");
 					int bnum = scan.nextInt();
 					System.out.println("가게 이름을 입력해주세요.");
@@ -141,7 +143,7 @@ public class phase3 {
 					int res = stmt.executeUpdate(sql);
 				}
 				
-				if(table == 3) {
+				else if(table == 3) {
 					System.out.println("고객의 이메일을 입력해주세요.");
 					String email = scan.next();
 					System.out.println("가게 등록 번호를 입력해주세요.");
@@ -153,7 +155,7 @@ public class phase3 {
 					int res = stmt.executeUpdate(sql);
 				}
 				
-				if(table == 4) {
+				else if(table == 4) {
 					System.out.println("가게 등록 번호를 입력해주세요.");
 					int bnum = scan.nextInt();
 					System.out.println("음식 등록 번호를 입력해주세요.");
@@ -166,7 +168,7 @@ public class phase3 {
 					sql = "INSERT INTO FOOD VALUES(" + bnum + ", " + fnum + ", " + price + ", '" + food_name + "')";
 					int res = stmt.executeUpdate(sql);
 				}
-				if(table == 5) {
+				else if(table == 5) {
 					System.out.println("국가의 등록 번호를 입력해주세요.");
 					int cid = scan.nextInt();
 					System.out.println("국가의 이름을 입력해주세요.");
@@ -176,7 +178,7 @@ public class phase3 {
 					int res = stmt.executeUpdate(sql);
 				}
 				
-				if(table == 6) {
+				else if(table == 6) {
 					System.out.println("가게 등록 번호를 입력해주세요.");
 					int bnum = scan.nextInt();
 					System.out.println("음료수 등록 ID를 입력해주세요.");
@@ -192,7 +194,7 @@ public class phase3 {
 					int res = stmt.executeUpdate(sql);
 				}
 				
-				if(table == 7) {
+				else if(table == 7) {
 					System.out.println("가게 등록 번호를 입력해주세요.");
 					int bnum = scan.nextInt();
 					System.out.println("점주의 이름의 성을 입력해주세요.");
@@ -212,7 +214,7 @@ public class phase3 {
 					int res = stmt.executeUpdate(sql);
 				}
 				
-				if(table == 8) {
+				else if(table == 8) {
 					System.out.println("가게 등록 번호를 입력해주세요.");
 					int bnum = scan.nextInt();
 					System.out.println("고객의 이메일을 입력해주세요.");
@@ -225,6 +227,7 @@ public class phase3 {
 					sql = "INSERT INTO RATING VALUES(" + bnum + ", '" + cemail + "', " + score + ", " + id + ")";
 					int res = stmt.executeUpdate(sql);
 				}
+				conn.commit();
 				
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
