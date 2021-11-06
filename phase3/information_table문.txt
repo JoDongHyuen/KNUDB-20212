@@ -1,0 +1,11 @@
+create table information(
+	Email	varchar2(20) not null primary key,
+	Pass_word	varchar2(15) not null,
+	Type_of_P	varchar2(10)
+);
+
+--owner, customer 에 email -> pk 에서 pk, fk 로 변환작업 후 아래 작업 실행
+
+alter table Customer add foreign key (Customer_email) references information(Email);
+alter table Owner add foreign key (Owner_email) references information(Email);
+
