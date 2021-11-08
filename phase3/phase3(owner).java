@@ -223,6 +223,18 @@ public class phase3 {
 			stmt.executeUpdate(sql);
 			
 			sql = "SELECT S.Store_name, T1.Avg_price, T2.Avg_score FROM TEMP1 T1, TEMP2 T2, STORE S WHERE T1.Bnum = T2.Bnum AND S.Breg_number = T1.Bnum AND S.Store_type in(  SELECT Store_type S2 FROM STORE S2, OWNER O WHERE O.Owner_email = ? AND S2.breg_number = O.bnum)";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, o_email);
+			ResultSet rs = ps.executeQuery();
+			
+			System.out.println("동종 업계 가게 명 | 평균 가격 | 평균 평점");
+			while(rs.next()) {
+				String store_name = rs.getString(1);
+				float avg_price = rs.getFloat(2);
+				float avg_score = rs.getFloat(3);
+				
+				System.out.println(store_name + " | " + avg_price + "  |  " + avg_score);
+			}
 			
 			sql = "DROP VIEW TEMP1";
 			stmt.executeUpdate(sql);
