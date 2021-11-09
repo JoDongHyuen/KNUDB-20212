@@ -142,10 +142,6 @@ public class phase33 {
 		while (true) {
 			System.out.print("나이 입력 (10세 ~ 100세) : ");
 			age = scan.nextInt();
-			if(age < 10 || age > 100) {
-				System.out.println("형식에 맞지 않습니다.");
-				continue;
-			}
 			break;
 		}
 		
