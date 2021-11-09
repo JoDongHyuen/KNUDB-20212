@@ -5,13 +5,88 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class Owner {
-	public static void ownerQuery(Connection conn, Statement stmt, Scanner scan) {
-		// get email
-		System.out.println("Owner");
-
+	public static void ownerFunction(Connection conn, Statement stmt, Scanner scan) {
+		int num;
+		
+		System.out.println("1. 로그인하기 2. 회원가입하기");
+		num=scan.nextInt();
+		switch(num) {
+			case 1:
+				o_login(conn, stmt, scan);
+				break;
+			case 2: 
+				register(conn, stmt, scan);
+				break;
+		}
+	}
+	
+	public static void o_login(Connection conn, Statement stmt, Scanner scan) {//로그인
+		int num;
+		
 		System.out.println("점주의 이메일을 입력하세요. ex) fm3si69f@nano.com");
 		String o_email = scan.next();
 		o_email = " " + o_email;
+		
+		System.out.println("1. 점주 정보 변경 2. 점포 정보 변경 3. 본인 점포 상태 확인");
+		num = scan.nextInt();
+		switch(num) {
+			case 1:
+				change_owner(conn, stmt, scan, o_email);
+				break;
+			case 2: 
+				change_store(conn, stmt, scan, o_email);
+				break;
+			case 3:
+				ownerQuery(conn, stmt, scan, o_email);
+				break;
+		}
+	}
+	
+	public static void change_owner(Connection conn, Statement stmt, Scanner scan, String o_email) {
+		
+	}
+	
+	public static void register(Connection conn, Statement stmt, Scanner scan) {//회원가입
+		String sql;
+		try {
+			sql = "SELECT COUNT(*) FROM OWNER";
+			ResultSet rs = stmt.executeQuery(sql);
+			int breg_number = rs.getInt(1) + 1;
+			System.out.println(breg_number);
+		}catch (SQLException e){
+			
+		}
+		
+		System.out.println("가게 등록 번호를 입력해주세요.");
+		int bnum = scan.nextInt();
+		System.out.println("점주의 이름의 성을 입력해주세요.");
+		String fname = scan.next();
+		System.out.println("점주의 이름을 입력해주세요.");
+		String lname = scan.next();
+		System.out.println("점주의 휴대폰 번호를 입력해주세요.");
+		String phone = scan.next();
+		System.out.println("점주의 이메일을 입력해주세요.");
+		String email = scan.next();
+		System.out.println("점주의 성별을 입력해주세요.(female, male)");
+		String sex = scan.next();
+		System.out.println("점주의 나이를 입력해주세요.");
+		int age = scan.nextInt();
+		
+		try {
+			sql = "INSERT INTO OWNER VALUES(" + bnum + ", '" + fname + "', '" + lname + "', '" + phone + "', '" + email + "', '" + sex + "', " + age + ")";
+			
+			int res = stmt.executeUpdate(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public static void change_store(Connection conn, Statement stmt, Scanner scan, String o_email) {
+		
+	}
+	
+	public static void ownerQuery(Connection conn, Statement stmt, Scanner scan, String o_email) {
 		int num;
 
 		try {
