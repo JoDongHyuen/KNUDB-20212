@@ -5,9 +5,47 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class Owner {
+	public static void ownerFunction(Connection conn, Statement stmt, Scanner scan) {
+		int num;
+		
+		System.out.println("1. 로그인하기 2. 회원가입하기");
+		num=scan.nextInt();
+		switch(num) {
+			case 1:
+				o_login(conn, stmt, scan);
+				break;
+			case 2: 
+				o_register(conn, stmt, scan);
+				break;
+		}
+	}
+	
+	public static void o_login(Connection conn, Statement stmt, Scanner scan) {//로그인
+		int num;
+		
+		System.out.println("1. 점포 정보 변경 2. 본인 점포 상태 확인");
+		num = scan.nextInt();
+		switch(num) {
+			case 1: 
+				change_store(conn, stmt, scan);
+				break;
+			case 2:
+				ownerQuery(conn, stmt, scan);
+		}
+	}
+	
+	public static void o_register(Connection conn, Statement stmt, Scanner scan) {//회원가입
+		
+	}
+	
+	public static void change_store(Connection conn, Statement stmt, Scanner scan) {
+		
+	}
+	
 	public static void ownerQuery(Connection conn, Statement stmt, Scanner scan) {
 		// get email
 		System.out.println("Owner");
+		
 
 		System.out.println("점주의 이메일을 입력하세요. ex) fm3si69f@nano.com");
 		String o_email = scan.next();
