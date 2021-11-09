@@ -1,3 +1,9 @@
+동작환경
+OS : window10
+SQL*PLUS : Release 19.0.0.0.0 - Production
+Version 19.3.0.0.0
+
+
 phase3를 진행하면서 기존에 없던 INFORMATION 테이블이 생겼습니다.
 INFORMATION 테이블을 이용하여 JAVA 콘솔창에서
 1. Owner
