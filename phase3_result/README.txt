@@ -1,4 +1,9 @@
-phase3를 진행하면서 기존에 없던 테이블이 생겼습니다
+phase3를 진행하면서 기존에 없던 INFORMATION 테이블이 생겼습니다.
+INFORMATION 테이블을 이용하여 JAVA 콘솔창에서
+1. Owner
+2. Customer
+3. Admin
+의 로그인 기능을 가능하도록 하였습니다.
 
 변경사항을 phase1에 반영하였으며
 
