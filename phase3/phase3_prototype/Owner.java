@@ -82,9 +82,112 @@ public class Owner {
 		}
 	}
 	
-	public static void change_store(Connection conn, Statement stmt, Scanner scan, String o_email) {
+	public static void StoreChange(String owner_email) { // 다른 정보 변경 추가 ????
+		
+		String stName, stType, stLoc;
+		int stSeats, bNum = 0;
+		System.out.println("바꿀 정보 선택");
+		System.out.println("1. 가게 이름");
+		System.out.println("2. 가게 종류");
+		System.out.println("3. 좌석 수");
+		System.out.println("4. 가게 위치");
+		//System.out.println("5. 완료, 정보 저장");
+		System.out.println("숫자 입력 : ");
+		Scanner scan = new Scanner(System.in);
+		PreparedStatement ps;
+		ResultSet rs;
+		int num = scan.nextInt();
+		String sql = "select Bnum from owner where owner_email = ?";
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, owner_email);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				bNum = rs.getInt(1);
+			}
+			
+		} catch (SQLException ex2) {
+			System.err.println("sql error = " + ex2.getMessage());
+		}
+		
+		switch(num) {
+		case 1:
+		{
+			System.out.print("바꿀 가게 이름 입력 : ");
+			stName = scan.next();
+			try {
+				sql = "Update store set store_name = ? WHERE breg_number = "
+						+ bNum;
+				ps = conn.prepareStatement(sql);
+				ps.setString(1, stName);
+				rs = ps.executeQuery();
+				
+			} catch (SQLException ex2) {
+				System.err.println("sql error = " + ex2.getMessage());
+			}
+			System.out.println("변경되었습니다");
+			break;
+		}
+		case 2:
+		{
+			System.out.print("바꿀 가게 종류 입력 (제과점영업, 휴게음식점, 일반음식점, ...): ");
+			stName = scan.next();
+			try {
+				sql = "Update store set store_type = ? WHERE breg_number = "
+						+ bNum;
+				ps = conn.prepareStatement(sql);
+				ps.setString(1, stName);
+				rs = ps.executeQuery();
+				
+			} catch (SQLException ex2) {
+				System.err.println("sql error = " + ex2.getMessage());
+			}
+			System.out.println("변경되었습니다");
+			break;
+		}
+		case 3:
+		{
+			System.out.print("변경할 좌석 수 입력 : ");
+			stSeats = scan.nextInt();
+			try {
+				sql = "Update store set Seat_number = ? WHERE breg_number = "
+						+ bNum;
+				ps = conn.prepareStatement(sql);
+				ps.setInt(1, stSeats);
+				rs = ps.executeQuery();
+				
+			} catch (SQLException ex2) {
+				System.err.println("sql error = " + ex2.getMessage());
+			}
+			System.out.println("변경되었습니다");
+			break;
+		}
+		case 4:
+		{
+			System.out.print("4. 가게 위치");
+			stLoc = scan.next();
+			try {
+				sql = "Update store set Location = ? WHERE breg_number = "
+						+ bNum;
+				ps = conn.prepareStatement(sql);
+				ps.setString(1, stLoc);
+				rs = ps.executeQuery();
+				
+			} catch (SQLException ex2) {
+				System.err.println("sql error = " + ex2.getMessage());
+			}
+			System.out.println("변경되었습니다");
+			break;
+		}
+		default:
+			break;
+		
+		}
 		
 	}
+
+
 	
 	public static void ownerQuery(Connection conn, Statement stmt, Scanner scan, String o_email) {
 		int num;
