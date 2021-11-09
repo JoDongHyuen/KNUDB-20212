@@ -34,7 +34,7 @@ public class Owner {
 				change_owner(conn, stmt, scan, o_email);
 				break;
 			case 2: 
-				change_store(conn, stmt, scan, o_email);
+				StoreChange(conn, o_email);
 				break;
 			case 3:
 				ownerQuery(conn, stmt, scan, o_email);
@@ -307,7 +307,7 @@ public class Owner {
 		}
 	}
 	
-	public static void StoreChange(String owner_email) { // 다른 정보 변경 추가 ????
+	public static void StoreChange(Connection conn, String owner_email) { // 다른 정보 변경 추가 ????
 		
 		String stName, stType, stLoc;
 		int stSeats, bNum = 0;
@@ -412,8 +412,6 @@ public class Owner {
 		
 	}
 
-
-	
 	public static void ownerQuery(Connection conn, Statement stmt, Scanner scan, String o_email) {
 		int num;
 
