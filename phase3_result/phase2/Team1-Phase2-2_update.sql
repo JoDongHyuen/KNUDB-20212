@@ -1,4 +1,5 @@
 set define off;
+insert into information values ('admin', '123456', 'admin');
 insert into information values (' w87on6ai@nano.com', '767531', 'customer');
 insert into information values (' 7yu1qoyn@nano.com', '382283', 'customer');
 insert into information values (' nyymllt0@nano.com', '245602', 'customer');
