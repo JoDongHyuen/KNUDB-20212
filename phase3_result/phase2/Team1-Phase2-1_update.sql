@@ -75,7 +75,7 @@ create table owner(
 );
 
 create table information(
-	Email	varchar2(20) not null primary key,
+	Email	varchar2(50) not null primary key,
 	Pass_word	varchar2(15) not null,
 	Type_of_P	varchar2(10)
 );
