@@ -39,10 +39,10 @@ public class phase3 {
 
 		switch (login_type) {
 		case 1:
-			Owner.ownerQuery(conn, stmt, scan);
+			Owner.ownerFunction(conn, stmt, scan);
 			break;
 		case 2:
-			Customer.customerQuery(conn, stmt, scan);
+			Customer.customerFunction(conn, stmt, scan);
 			break;
 		case 3:
 			Admin.adminQuery(conn, stmt, scan);
@@ -63,17 +63,7 @@ public class phase3 {
 	public static int login(Scanner scan) {
 		System.out.println("로그인할 계정을 선택해주세요. 1) OWNER 2) CUSTOMER 3) ADMINISTRATOR");
 		int login_type = scan.nextInt();
-
 		return login_type;
-
-	}
-
-	public static void Owner() {
-		// get email
-	}
-
-	public static void Customer() {
-		// get email
 
 	}
 
