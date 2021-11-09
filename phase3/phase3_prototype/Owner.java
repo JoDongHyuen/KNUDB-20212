@@ -15,7 +15,7 @@ public class Owner {
 				o_login(conn, stmt, scan);
 				break;
 			case 2: 
-				o_register(conn, stmt, scan);
+				register(conn, stmt, scan);
 				break;
 		}
 	}
@@ -23,33 +23,30 @@ public class Owner {
 	public static void o_login(Connection conn, Statement stmt, Scanner scan) {//로그인
 		int num;
 		
+		System.out.println("점주의 이메일을 입력하세요. ex) fm3si69f@nano.com");
+		String o_email = scan.next();
+		o_email = " " + o_email;
+		
 		System.out.println("1. 점포 정보 변경 2. 본인 점포 상태 확인");
 		num = scan.nextInt();
 		switch(num) {
 			case 1: 
-				change_store(conn, stmt, scan);
+				change_store(conn, stmt, scan, o_email);
 				break;
 			case 2:
-				ownerQuery(conn, stmt, scan);
+				ownerQuery(conn, stmt, scan, o_email);
 		}
 	}
 	
-	public static void o_register(Connection conn, Statement stmt, Scanner scan) {//회원가입
+	public static void register(Connection conn, Statement stmt, Scanner scan) {//회원가입
 		
 	}
 	
-	public static void change_store(Connection conn, Statement stmt, Scanner scan) {
+	public static void change_store(Connection conn, Statement stmt, Scanner scan, String o_email) {
 		
 	}
 	
-	public static void ownerQuery(Connection conn, Statement stmt, Scanner scan) {
-		// get email
-		System.out.println("Owner");
-		
-
-		System.out.println("점주의 이메일을 입력하세요. ex) fm3si69f@nano.com");
-		String o_email = scan.next();
-		o_email = " " + o_email;
+	public static void ownerQuery(Connection conn, Statement stmt, Scanner scan, String o_email) {
 		int num;
 
 		try {
