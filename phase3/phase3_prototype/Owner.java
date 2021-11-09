@@ -15,7 +15,7 @@ public class Owner {
 				o_login(conn, stmt, scan);
 				break;
 			case 2: 
-				register(conn, stmt, scan);
+				o_register(conn, stmt, scan);
 				break;
 		}
 	}
@@ -23,7 +23,7 @@ public class Owner {
 	public static void o_login(Connection conn, Statement stmt, Scanner scan) {//로그인
 		int num;
 		
-		System.out.println("점주의 이메일을 입력하세요. ex) fm3si69f@nano.com");
+		System.out.println("점주의 이메일을 입력하세요. ex) vkbp31z1@nano.com");
 		String o_email = scan.next();
 		o_email = " " + o_email;
 		
@@ -43,42 +43,267 @@ public class Owner {
 	}
 	
 	public static void change_owner(Connection conn, Statement stmt, Scanner scan, String o_email) {
-		
+		try {
+	         String sql = "";
+	         PreparedStatement ps = null;
+	         System.out.println("1. Fname 변경  2. Lname 변경  3.휴대전화 변경  4.나이 변경");
+	         int num = scan.nextInt();
+	         scan.nextLine();
+	         switch (num)
+	         {
+	         case 1:
+	            sql = "Update Owner SET Fname = ? WHERE OWNER_EMAIL='" + o_email + "'";
+	            ps = conn.prepareStatement(sql);            
+	            break;
+	         case 2:
+	            sql = "Update Owner SET Lname = ? WHERE OWNER_EMAIL='" + o_email + "'";
+	            ps = conn.prepareStatement(sql);
+	            break;
+	         case 3:
+	            sql = "Update Owner SET Phone_number = ? WHERE OWNER_EMAIL='" + o_email + "'";
+	            ps = conn.prepareStatement(sql);
+	            break;
+	         case 4:
+	            sql = "Update Owner SET Age = ? WHERE OWNER_EMAIL='" + o_email + "'";
+	            ps = conn.prepareStatement(sql);
+	            break;
+	         }
+	         System.out.printf("변경할 값을 입력해주세요 : ");
+	         String var = scan.nextLine();
+	         ps.setString(1, var);
+	         ps.executeUpdate();
+	         
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      }
 	}
 	
-	public static void register(Connection conn, Statement stmt, Scanner scan) {//회원가입
-		String sql;
+	public static void o_register(Connection conn, Statement stmt, Scanner scan) {//회원가입
+		String sql, email, password, fname, phoneNum, sex;
+		int age;
+
 		try {
 			sql = "SELECT COUNT(*) FROM OWNER";
-			ResultSet rs = stmt.executeQuery(sql);
-			int breg_number = rs.getInt(1) + 1;
-			System.out.println(breg_number);
-		}catch (SQLException e){
 			
+			ResultSet rs = stmt.executeQuery(sql);
+			rs.next();
+			int bnum = rs.getInt(1) + 1;
+			sql = "INSERT INTO STORE VALUES(?, 'k', 'k', 44, 'k')";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, bnum);
+			rs = ps.executeQuery();
+			
+			 while (true) {
+		         System.out.print("성씨 입력 : ");
+		         fname = scan.next();
+		         
+		         if(fname.length() > 2) {
+		            System.out.println("성씨가 너무 깁니다.");
+		            continue;
+		         }
+		         break;
+		      }
+
+			 System.out.print("이름 입력 : ");
+			 String lname = scan.next();
+			 while (true) {
+				 System.out.print("휴대폰 번호 입력 (ex : 010-1111-1111) : "); // 형식 맞는지 확인
+		         phoneNum = scan.next();
+		      
+		         if(phoneNum.length() != 13) {
+		            System.out.println("형식에 맞지 않습니다.");
+		            continue;
+		         }
+		         if(phoneNum.charAt(3) != '-' || phoneNum.charAt(8) != '-') {
+		            System.out.println("형식에 맞지 않습니다.");
+		            continue;
+		         }
+		         break;
+		      }
+			
+			 sql = "select owner_email from owner";
+			 while (true) {
+				 System.out.print("e-mail 주소 입력 (@nano.com 추천) : ");
+				 email = scan.next();
+				 email = " " + email;
+				 int flag = 1; // 겹치는 것 있으면 flag = 0 로 바꿈
+	
+				 ps = conn.prepareStatement(sql);
+				 rs = ps.executeQuery();
+				 while (rs.next()) {
+					 String temp_e = rs.getString(1);
+					 if (temp_e.equals(email)) {
+						 flag = 0;
+						 break;
+					 }
+		        }  
+				 if (flag == 0) { // 겹치는 것 있음
+					 System.out.println("e-mail 이 겹칩니다. 다시 입력해주세요.");
+					 continue;
+				 }
+				 if(!(email.substring(email.length() - 4, email.length()).equals(".com"))) {
+					 System.out.println("e-mail 형식에 맞지 않습니다. 다시 입력해주세요.");
+					 continue;
+				 }
+				 break;
+			 }
+			
+			 while (true) {
+				 System.out.print("password 입력 (15자리 이내, 최소 6자리 숫자 추천) : ");
+				 password = scan.next();
+		         if(password.length() > 15 || password.length() < 6) {
+		        	 System.out.println("password 길이가 안맞습니다. 다시 입력해주세요.");
+		        	 continue;
+		         }
+		         break;
+			 }
+
+			 while (true) {
+				 System.out.print("성별 입력 (ex : M / F 입력) : "); //***m, f 입력하면 넣을때는 if문 써서 male / female 로 넣도록
+		         sex = scan.next();
+		         if(sex.equals("f") || sex.equals("F")){
+		        	 sex = "female";
+		        	 break; // 나중에 이거 처리할때 if 문쓰기***
+		         }
+		         else if(sex.equals("m") || sex.equals("M")){
+		        	 sex = "male";
+		        	 break;
+		         }
+		         System.out.println("형식에 맞지 않습니다");
+			 }
+
+			 System.out.print("점주의 나이를 입력 : ");
+			 age = scan.nextInt();
+			
+			sql = "INSERT INTO INFORMATION VALUES(?, ?, ?)";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, email);
+			ps.setString(2, password);
+			ps.setString(3, "owner");
+			rs = ps.executeQuery();
+			
+			sql = "INSERT INTO OWNER VALUES(?, ?, ?, ?, ?, ?, ?)";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, bnum);
+			ps.setString(2, fname);
+			ps.setString(3, lname);
+			ps.setString(4, phoneNum);
+			ps.setString(5, email);
+			ps.setString(6, sex);
+			ps.setInt(7, age);
+			rs = ps.executeQuery();
+			
+			sql = "UPDATE STORE SET Store_name = ?, Store_type = ?, Seat_number = ?, Location = ? WHERE Breg_number = ?";
+			ps = conn.prepareStatement(sql);
+			System.out.print("가게 이름 입력 : ");
+			String sname = scan.next();
+			System.out.print("가게 타입 입력(휴게음식점, 일반음식점, 제과점영업) : ");
+			String type = scan.next();
+			System.out.print("가게 좌석 수 입력 : ");
+			int seat = scan.nextInt();
+			System.out.print("가게 주소 입력 : ");
+			String location = scan.next();
+			ps.setString(1, sname);
+			ps.setString(2, type);
+			ps.setInt(3, seat);
+			ps.setString(4, location);
+			ps.setInt(5, bnum);
+			rs = ps.executeQuery();
+			
+			System.out.println("회원 가입이 완료되었습니다.");
+			
+			while(true) {
+				System.out.println("1. 가게에 음식 추가 2. 가게에 음료 추가 0. 종료");
+				int f_num = scan.nextInt();
+
+				if(f_num == 1) 
+					add_food(conn, stmt, scan, email, bnum);
+				
+				if(f_num == 2)
+					add_beverage(conn, stmt, scan, email, bnum);
+				
+				if(f_num == 0)
+					break;
+			}
+		}catch (SQLException e){
+			System.out.println("Insert Error: " + e);
 		}
-		
-		System.out.println("가게 등록 번호를 입력해주세요.");
-		int bnum = scan.nextInt();
-		System.out.println("점주의 이름의 성을 입력해주세요.");
-		String fname = scan.next();
-		System.out.println("점주의 이름을 입력해주세요.");
-		String lname = scan.next();
-		System.out.println("점주의 휴대폰 번호를 입력해주세요.");
-		String phone = scan.next();
-		System.out.println("점주의 이메일을 입력해주세요.");
-		String email = scan.next();
-		System.out.println("점주의 성별을 입력해주세요.(female, male)");
-		String sex = scan.next();
-		System.out.println("점주의 나이를 입력해주세요.");
-		int age = scan.nextInt();
+	}
+
+	public static void add_food(Connection conn, Statement stmt, Scanner scan, String o_email, int bnum) {
+		ResultSet rs;
+		int f_id;
+		String sql;
+		PreparedStatement ps;
 		
 		try {
-			sql = "INSERT INTO OWNER VALUES(" + bnum + ", '" + fname + "', '" + lname + "', '" + phone + "', '" + email + "', '" + sex + "', " + age + ")";
+			sql = "SELECT COUNT(*) FROM FOOD";
+			rs = stmt.executeQuery(sql);
+			rs.next();
+			f_id = rs.getInt(1) + 1;
 			
-			int res = stmt.executeUpdate(sql);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			sql = "INSERT INTO FOOD VALUES(?, ?, ?, ?)";
+			ps = conn.prepareStatement(sql);
+			
+			System.out.print("음식 이름 입력 : ");
+			String food_name = scan.next();
+			System.out.print("음식 가격 입력 : ");
+			int price = scan.nextInt();
+			
+			ps.setInt(1, bnum);
+			ps.setInt(2, f_id);
+			ps.setInt(3, price);
+			ps.setString(4, food_name);
+			rs = ps.executeQuery();
+			
+		} catch (SQLException e){
+			System.out.println("Insert Error: " + e);
+		}
+	}
+	
+	public static void add_beverage(Connection conn, Statement stmt, Scanner scan, String o_email, int bnum) {
+		int b_id;
+		String sql, alcohol;
+		PreparedStatement ps;
+		ResultSet rs;
+		
+		try {
+			sql = "SELECT COUNT(*) FROM BEVERAGE";
+			rs = stmt.executeQuery(sql);
+			rs.next();
+			b_id = rs.getInt(1) + 1;
+			
+			sql = "INSERT INTO BEVERAGE VALUES(?, ?, ?, ?, ?)";
+			ps = conn.prepareStatement(sql);
+			
+			System.out.print("음료 이름 입력 : ");
+			String beverage_name = scan.next();
+			System.out.print("음료 가격 입력 : ");
+			int price = scan.nextInt();
+	
+			while(true) {
+				System.out.print("알콜 유무(Y, N) : ");
+				alcohol = scan.next();
+				if(alcohol.equals("Y") || alcohol.equals("y")) {
+					alcohol = "Y";
+					break;
+				}
+				else if(alcohol.equals("N") || alcohol.equals("n")) {
+					alcohol = "N";
+					break;
+				}
+				else
+					System.out.println("형식에 맞게 입력해주세요.");
+			}	
+			ps.setInt(1, bnum);
+			ps.setInt(2, b_id);
+			ps.setString(3, alcohol);
+			ps.setString(4, beverage_name);
+			ps.setInt(5, price);
+			rs = ps.executeQuery();
+			
+		} catch (SQLException e){
+			System.out.println("Insert Error: " + e);
 		}
 	}
 	
