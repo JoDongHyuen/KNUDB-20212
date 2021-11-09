@@ -12,6 +12,30 @@ import java.util.Scanner;
 public class Admin {
 	
 	public static void adminQuery(Connection conn, Statement stmt, Scanner scan) throws IOException {
+		
+		while(true) {
+			
+			System.out.println("관리자의 비밀번호를 입력해주세요.");
+			String password = scan.next();
+			
+			try {
+				String sql = "SELECT PASS_WORD FROM INFORMATION WHERE EMAIL = 'admin'";
+				PreparedStatement ps = conn.prepareStatement(sql);
+				ResultSet rs = ps.executeQuery();
+				rs.next();
+				
+				String get_password = rs.getString(1);
+				if(get_password.equals(password)) {
+					System.out.println("로그인 성공");
+					break;
+				}
+				else
+					System.out.println("이메일 또는 비밀번호가 틀렸습니다.");
+				
+			}catch (SQLException e) {
+		         e.printStackTrace();
+		      }
+		}
 		// Scanner scan = new Scanner(System.in);
 		System.out.println("1. 나이대별 고객 조사");
 		System.out.println("2. 특정인 소유 가게 조회");
