@@ -6,8 +6,8 @@ import java.util.Scanner;
 
 public class phase3 {
 	public static final String URL = "jdbc:oracle:thin:@localhost:1521:orcl";
-	public static final String USER_COMPANY = "term";
-	public static final String USER_PASSWD = "term";
+	public static final String USER_COMPANY = "restaurant";
+	public static final String USER_PASSWD = "restaurant";
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub

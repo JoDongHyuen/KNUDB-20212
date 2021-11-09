@@ -19,10 +19,35 @@ public class Customer {
 
 	public static void c_login(Connection conn, Statement stmt, Scanner scan) {// 로그인
 		int num;
-
-		System.out.println("고객의 이메일을 입력하세요. ex) fm3si69f@nano.com");
-		String o_email = scan.next();
-		o_email = " " + o_email;
+		String o_email;
+		
+		while(true) {
+			System.out.println("고객의 이메일을 입력하세요. ex) cu1aos36@nano.com");
+			o_email = scan.next();
+			o_email = " " + o_email;
+			
+			System.out.println("점주의 비밀번호를 입력해주세요. ex) 138759");
+			String password = scan.next();
+			
+			try {
+				String sql = "SELECT PASS_WORD FROM INFORMATION WHERE EMAIL = ?";
+				PreparedStatement ps = conn.prepareStatement(sql);
+				ps.setString(1, o_email);
+				ResultSet rs = ps.executeQuery();
+				rs.next();
+				
+				String get_password = rs.getString(1);
+				if(get_password.equals(password)) {
+					System.out.println("로그인 성공");
+					break;
+				}
+				else
+					System.out.println("이메일 또는 비밀번호가 틀렸습니다.");
+				
+			}catch (SQLException e) {
+		         e.printStackTrace();
+		      }
+		}
 
 		System.out.println("1. 고객 정보 변경 2. 가게 Searching");
 		num = scan.nextInt();
