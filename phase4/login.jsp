@@ -35,12 +35,13 @@
 	
 	pstmt = conn.prepareStatement(sql);
 	rs = pstmt.executeQuery();
+	String type = "";
 	int flag = 0; // flag 1 -> 로그인 정보 일치 // flag 2 -> 로그인 정보 불일치
 					// flag 0 -> 아이디 없음
 	while (rs.next()) { // 이메일 맨 처음에 공백이 있음을 생각
 		String id = rs.getString(1);
 		String pw = rs.getString(2);
-		String type = rs.getString(3);
+		type = rs.getString(3);
 		String newId = "";
 		int i = 0;
 		
@@ -58,11 +59,18 @@
 	if (flag == 0) { // 아이디 없음
 		response.sendRedirect("homepage.html");
 	} else if (flag == 1) { // 로그인 성공
-		 response.sendRedirect("customer.html");
+		if(type.equals("customer"))
+			response.sendRedirect("customer.html");
+		else if(type.equals("owner"))
+			response.sendRedirect("owner.html");
+		else
+			response.sendRedirect("admin.html");
+			
+
 	} else if (flag == 2) { // 로그인 정보 불일치
 		response.sendRedirect("homepage.html");
 	}
-
+	
 	out.println("hello world");
 %>
 
