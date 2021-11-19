@@ -13,6 +13,9 @@
 		<div class="logo-right">COMP322004</div>
 	</div>
 	<div id="body">
+		<ul class="actions">
+				<li><a href="Query.jsp" class="button alt"><b>Search</b></a></li>
+		</ul>
 		<div class="login-form">
 		<% 
 			if(session.getAttribute("userType") == null) {
@@ -36,7 +39,7 @@
  -->
 				<input type="text" value="" name="id" class="text-field" placeholder="ID">
 				<input type="password" value="" name="passWord" class="text-field" placeholder="PW">
-				<input type="submit" value="submit" class="btn">
+				<input type="submit" value="Log In" class="btn">
 				<button type="button" class="btn" value="signup" onClick="location.href='register.jsp'">Sign Up</button>
 			</form>
 		<% 
@@ -48,8 +51,8 @@
 				어서오세요!<br>
 				<%=session.getAttribute("fname") %><%=session.getAttribute("lname") %>님
 			</div><br>
-			<input type="button" class="btn" value="개인 정보 관리">
-			<input type="button" class="btn" value="예약하기">
+			<input type="button" class="btn" value="개인 정보 관리" onclick="location.href='updateCustomer.jsp'">
+			<input type="button" class="btn" value="예약하기" onclick="location.href='reserveCustomer.jsp'">
 			<input type="button" class="btn" value="Log Out" onclick="location.href='logout.jsp'">
 		</div>
 		
@@ -62,15 +65,15 @@
 				어서오세요!<br>
 				<%=session.getAttribute("fname") %><%=session.getAttribute("lname") %>님
 			</div><br>
-			<input type="button" class="btn" value="개인 정보 관리">
-			<input type="button" class="btn" value="점포 정보 관리">
-			<input type="button" class="btn" value="예약 관리">
+			<input type="button" class="btn" value="개인 정보 관리" onclick="location.href='updateOwner.jsp'">
+			<input type="button" class="btn" value="점포 정보" onclick="location.href='OwnerFunc.jsp'">
+			<input type="button" class="btn" value="예약 관리" onclick="location.href='reserveOwner.jsp'">
 			<input type="button" class="btn" value="Log Out" onclick="location.href='logout.jsp'">
 		</div>
 		
 		<% 
 			} else if(session.getAttribute("userType").equals("admin"))
-				response.sendRedirect("admin.html");
+				response.sendRedirect("AdminFunc.jsp");
 		%>
 	
 		</div>

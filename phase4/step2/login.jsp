@@ -78,6 +78,7 @@
 			rs2.close();
 			session.setAttribute("userType", "customer");
 			session.setAttribute("userId", id);
+			pstmt2.close();
 		}
 		else if(type.equals("owner")) {
 			sql3 = sql3 + "' " + id + "'";
@@ -93,6 +94,7 @@
 			rs3.close();
 			session.setAttribute("userType", "owner");
 			session.setAttribute("userId", id);
+			pstmt3.close();
 		}
 		else {
 			session.setAttribute("userType", "admin");
