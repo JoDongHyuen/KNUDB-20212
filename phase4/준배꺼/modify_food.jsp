@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
+<title>점포 음식 수정</title>
 </head>
 <body>
 <%
@@ -52,34 +52,37 @@
 			origin[i] = rs.getString(1);
 	}
 %>
-	<form method="post" id="updateOrDeleteFrm">
-		<table>
-			<tr>
-				<th></th>
-				<th>음식</th>
-				<th>가격</th>
-				<th>원산지</th>
-			</tr>	
-			<% for(int j=0; j<k; j++) {%>
+
+	<table>
+		<tr>
+			<th></th>
+			<th>음식</th>
+			<th>가격</th>
+			<th>원산지</th>
+		</tr>	
+		<% for(int j=0; j<k; j++) {%>
+			<form method="post" id="updateOrDeleteFrm">			
 				<tr>
 					<td><input type="hidden" name="f_id" value="<%=f_id[j] %>"></td>
 					<td><input type="text" name="f_name" value="<%=f_name[j] %>"></td>
 					<td><input type="text" name="f_price" value="<%=f_price[j] %>"></td>
 					<td><input type="text" name="origin" value="<%=origin[n] %>"></td>
+					
 					<td>
-						<input type="button" onclick="fnUserModify('update_food.jsp');" value="저장">
-						<input type="button" onclick="fnUserModify('delete_food.jsp');" value="삭제">
+					<input type="submit" value="저장" formaction="update_food.jsp">
+					<input type="submit" value="삭제" formaction="delete_food.jsp">
 					</td>
 				</tr>
-			<%n++;} %>
-		</table>
-		<input type="button" onclick="fnUserModify('insert_food.jsp');" value="추가하기">
-		<input type="button" value="취소" onclick="priorPage();" />
-	</form>
+			</form>
+		<%n++;} %>
+	</table>
+	
+	<input type="button" onclick="fnUserModify('insert_food.jsp');" value="추가하기">
+	<input type="button" value="취소" onclick="priorPage();" />
 	
 	<script type="text/javascript">
 	function fnUserModify(pageUrl) { 
-		var frm = document.getElementById("updateOrDeleteFrm"); 
+		var frm = document.getElementById("updateOrDeleteFrm");
 		frm.action = pageUrl;
 		frm.submit(); 
 	} 

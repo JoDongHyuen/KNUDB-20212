@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
+<title>점포 음료 수정</title>
 </head>
 <body>
 <%
@@ -45,29 +45,29 @@
 		i++;
 	}
 %>
-	<form method="post" id="updateOrDeleteFrm">
-		<table>
-			<tr>
-				<th></th>	
-				<th>음료</th>
-				<th>가격</th>
-				<th>주류 여부(Y or N)</th>
-			</tr>
-			<% for(int j=0; j<i; j++) {
-				if(d_price[j] != 0) { %>
+	<table>
+		<tr>
+			<th></th>	
+			<th>음료</th>
+			<th>가격</th>
+			<th>주류 여부(Y or N)</th>
+		</tr>
+		<% for(int j=0; j<i; j++) {
+			if(d_price[j] != 0) { %>
+				<form method="post" id="updateOrDeleteFrm">
 					<tr>
 						<td><input type="hidden" name="d_id" value="<%=d_id[j] %>"></td>
 						<td><input type="text" name="d_name" value="<%=d_name[j] %>"></td>
 						<td><input type="text" name="d_price" value="<%=d_price[j] %>"></td>
 						<td><input type="text" name="alcohol" value="<%=alcohol[j] %>"></td>
 						<td>
-							<input type="button" onclick="fnUserModify('update_drink.jsp');" value="저장">
-							<input type="button" onclick="fnUserModify('delete_drink.jsp');" value="삭제">
+							<input type="submit" formaction="update_drink.jsp" value="저장">
+							<input type="submit" formaction="delete_drink.jsp" value="삭제">
 						</td>
 					</tr>
-			<%}} %>
-		</table>
-	</form>
+				</form>
+		<%}} %>
+	</table>
 	<input type="button" onclick="fnUserModify('insert_drink.jsp');" value="추가하기">
 	<input type="button" value="취소" onclick="priorPage();" />
 	

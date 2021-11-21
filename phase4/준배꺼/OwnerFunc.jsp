@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>고객 정보 수정</title>
+<title>점포 수정</title>
 </head>
 <body>
 
@@ -45,34 +45,7 @@
 		seat_number = rs.getInt(4);
 		location = rs.getString(5);
 	}
-	
-	sql = "select price, food_name from food where bnum=?";
-	ps = conn.prepareStatement(sql);
-	ps.setInt(1, bnum);
-	rs = ps.executeQuery();
-	String[] f_name = new String[5];
-	int[] f_price = new int[5];
-	int i=0;
-	
-	while(rs.next()){
-		f_price[i]=rs.getInt(1);
-		f_name[i]=rs.getString(2);
-		i++;
-	}
-	
-	sql = "select price, drink_name, alcohol from beverage where bnum=?";
-	ps = conn.prepareStatement(sql);
-	ps.setInt(1, bnum);
-	rs = ps.executeQuery();
-	String[] d_name = new String[5], alcohol = new String[5];
-	int[] d_price = new int[5];
-	
-	while(rs.next()){
-		f_price[i]=rs.getInt(1);
-		f_name[i]=rs.getString(2);
-		alcohol[i]=rs.getString(3);
-		i++;
-	}
+
 %>
 	<form method="post" action="updateOwner_ok.jsp" id="frm">
 		<table>

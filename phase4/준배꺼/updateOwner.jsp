@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>고객 정보 수정</title>
+<title>점주 정보 수정</title>
 </head>
 <body>
 

@@ -9,6 +9,10 @@
 </head>
 <body>
 <%
+
+	String f_name = new String(request.getParameter("f_name").getBytes("8859_1"),"KSC5601");   
+	String origin = new String(request.getParameter("origin").getBytes("8859_1"),"KSC5601"); 
+
 	String serverIP = "localhost";
 	String strSID = "orcl";
 	String portNum = "1521";
@@ -33,6 +37,5 @@
 	
 	response.sendRedirect("modify_food.jsp");
 %>
-
 </body>
 </html>

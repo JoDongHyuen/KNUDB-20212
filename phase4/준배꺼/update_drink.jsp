@@ -38,9 +38,10 @@
 	ps.setString(2, d_name);
 	ps.setString(3, alcohol);
 	ps.setInt(4, d_id);
-	ps.executeUpdate();
+	int res = ps.executeUpdate();
 	
 	response.sendRedirect("modify_drink.jsp");
 %>
+
 </body>
 </html>
