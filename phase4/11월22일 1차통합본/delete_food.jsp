@@ -16,8 +16,8 @@
 	String serverIP = "localhost";
 	String strSID = "orcl";
 	String portNum = "1521";
-	String user = "term";
-	String pass = "term";
+	String user = (String)session.getAttribute("DBID");
+	String pass = (String)session.getAttribute("DBPW");
 	String url = "jdbc:oracle:thin:@" + serverIP + ":"
 	+ portNum + ":" + strSID;
 	

@@ -28,6 +28,7 @@
 .main .main_contents {
     border-top: solid 1px;
     padding: 20px;
+    width: 1080px;
 }
 
 .main .main_contents .member_category{
@@ -36,7 +37,7 @@
 }
 
 .main .main_contents .member_category .title{
-  width: 1334px;
+  width: 1020px;
   height: 62px;
   background: #F9FAFC;
   border-bottom: 1px solid #B9D2DD;
@@ -57,6 +58,7 @@
   margin: 20px;
   overflow-y: auto;
   height: 870px;
+  width: 1020px;
 }
 
 .main .main_contents .member_category .member_list::-webkit-scrollbar-track{
@@ -84,6 +86,33 @@
   font-size: 16px;
   table-layout: fixed;
   word-break: break-all;
+}
+
+.member_entity td {
+  /* border-bottom: 2px solid #b9d2dd; */
+  height: 62px;
+  border-bottom: 1px solid #b9d2dd;
+  padding: 10px;
+}
+
+.member_entity thead {
+  background: #eaedf1;
+  height: 62px;
+  border: 1px solid #b9d2dd;
+  box-sizing: border-box;
+}
+.member_entity th {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 22px;
+  color: #78868c;
+}
+
+.member_entity tbody {
+  background: #f9fafc;
+  border: 1px solid #b9d2dd;
+  box-sizing: border-box;
 }
 
 

@@ -18,6 +18,8 @@
 		</ul>
 		<div class="login-form">
 		<% 
+			session.setAttribute("DBID", "term");
+			session.setAttribute("DBPW", "term");
 			if(session.getAttribute("userType") == null) {
 		%>
 			<form action="login.jsp" method="post">
@@ -53,6 +55,7 @@
 			</div><br>
 			<input type="button" class="btn" value="개인 정보 관리" onclick="location.href='updateCustomer.jsp'">
 			<input type="button" class="btn" value="예약하기" onclick="location.href='reserveCustomer.jsp'">
+			<input type="button" class="btn" value="평가하기" onclick="location.href='reserveCustomer.jsp'">
 			<input type="button" class="btn" value="Log Out" onclick="location.href='logout.jsp'">
 		</div>
 		
@@ -73,7 +76,7 @@
 		
 		<% 
 			} else if(session.getAttribute("userType").equals("admin"))
-				response.sendRedirect("AdminFunc.jsp");
+				response.sendRedirect("AdminCustomer.jsp");
 		%>
 	
 		</div>

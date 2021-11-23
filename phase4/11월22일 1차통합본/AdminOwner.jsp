@@ -49,7 +49,7 @@
 		</div>
 		<div class="main">
 			<div class="top">Hello World!</div>
-			<div class="main-title">绊按 包府</div>
+			<div class="main-title">痢林 包府</div>
 			<div class="main_contents">
 				<div class="member_category">
 					<div class="title">
@@ -67,16 +67,16 @@
 								</tr>
 							</thead>
 							<%
-								String sql = "select * from customer";
+								String sql = "select * from owner";
 								pstmt = conn.prepareStatement(sql);
 								rs = pstmt.executeQuery();
 								while (rs.next()) {
 									out.println("<tr>");
-									out.println("<td>"+rs.getString(1)+rs.getString(2)+"</td>");
-									out.println("<td>"+rs.getString(3)+"</td>");
+									out.println("<td>"+rs.getString(2)+rs.getString(3)+"</td>");
 									out.println("<td>"+rs.getString(4)+"</td>");
 									out.println("<td>"+rs.getString(5)+"</td>");
-									out.println("<td>"+rs.getInt(6)+"</td>");
+									out.println("<td>"+rs.getString(6)+"</td>");
+									out.println("<td>"+rs.getInt(7)+"</td>");
 									out.println("</tr>");
 								}
 								rs.close();
