@@ -64,16 +64,17 @@
 
 		String fname = String.valueOf(session.getAttribute("fname"));
 		String lname = String.valueOf(session.getAttribute("lname"));
+		String id = String.valueOf(session.getAttribute("id"));
 		//String fname = "°­";
 		//String lname = "µµ¿ø";
-
+		/*
 		sql = "select Customer_email from customer where Fname = '" + fname + "' and Lname = '" + lname + "'";
 
 		rs = stmt.executeQuery(sql);
 		rs.next();
-		String email = rs.getString(1);
+		String email = rs.getString(1);*/
 
-		sql = "insert into cust_books_str values('" + email + "', " + bNum + ", " + time + ", 'YYYY-MM-DD HH24:MI:SS'))";
+		sql = "insert into cust_books_str values(' " + id + "', " + bNum + ", " + time + ", 'YYYY-MM-DD HH24:MI:SS'))";
 		int res = stmt.executeUpdate(sql);
 		conn.commit();
 

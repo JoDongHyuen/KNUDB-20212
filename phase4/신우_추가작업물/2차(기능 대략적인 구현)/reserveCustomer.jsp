@@ -30,21 +30,21 @@
   	out.println(fname);
   	String lname = String.valueOf(session.getAttribute("lname"));
     	out.println(lname);
+    String id = String.valueOf(session.getAttribute("id"));
     session.setAttribute("fname", fname);
     session.setAttribute("lname", lname);
+    session.setAttribute("id", id);
     	
   	String query = "SELECT C.Fname, C.Lname, TO_CHAR(B.Time, 'YYYY-MM-DD HH24:MI:SS'), S.Store_name "
   	+ "FROM CUSTOMER C,  CUST_BOOKS_STR B, STORE S "
-  	//+ "WHERE C.Fname = '" + fname + "' "
-  	+ "WHERE C.Fname = ? "
-  	+ "AND C.Lname = ? "
+  	+ "WHERE C.Customer_email = ? "
   	+ "AND C.Customer_email = B.Cemail "
   	+ "AND B.Bnum = S.Breg_number "
   	+ "ORDER BY B.time";
-  	
+  	id = " " + id;
   	pstmt = conn.prepareStatement(query);
-    	pstmt.setString(1, fname);
-    	pstmt.setString(2, lname);
+    	pstmt.setString(1, id);
+    	//pstmt.setString(2, lname);
     	rs = pstmt.executeQuery();
 
   	out.println("<thead> <tr> <th scope=\"cols\"> 성 </th>  <th scope=\"cols\">  이름 </th>  <th scope=\"cols\"> 예약 시간 </th>  <th scope=\"cols\"> 예약 장소 </th> </tr> </thead>");
