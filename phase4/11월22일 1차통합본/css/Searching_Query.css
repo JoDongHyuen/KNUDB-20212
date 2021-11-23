@@ -1,0 +1,30 @@
+a.logo2 {
+	height: 30px;
+	color: #ffffff;
+	text-decoration: none;
+	font-size: 30px;
+	text-transform: capitalize;	
+}
+
+.btn{
+	margin-left: 10px;
+	width: 70px;
+	height: 46px;
+	background: #339CE5;
+	border: 1px solid #78C7FE;
+	box-sizing: border-box;
+}
+
+.txt{
+	height: 45px;
+	width: 120px;
+	padding-left: 15px;
+}
+.frm{
+	padding-left: 10%;
+	margin-top: 50px;
+}
+
+th{
+	width: 100px;
+}

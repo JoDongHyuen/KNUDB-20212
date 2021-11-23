@@ -14,7 +14,7 @@
 	</div>
 	<div id="body">
 		<ul class="actions">
-				<li><a href="Query.jsp" class="button alt"><b>Search</b></a></li>
+				<li><a href="Search_Query1.jsp" class="button alt"><b>Search</b></a></li>
 		</ul>
 		<div class="login-form">
 		<% 
