@@ -97,15 +97,16 @@
 	<div class="container">
 		<div class="navigation">
 			<div class="logo">
+				<a class="logo2" href="homepage.jsp">Database</a>
 			</div>
 			<ul>
 				<li><a href="#">
 				  <span class="icon"><img src="image/customer.png" alt="customer" /></span>
 				  <span class="title">고객 관리</span>
 				</a></li>
-				<li><a href="/admin_member">
+				<li><a href="StoreState.jsp">
 				  <span class="icon"><img src="image/owner.png" alt="owner" /></span>
-				  <span class="title">점주 관리</span>
+				  <span class="title">가게 정보</span>
 				</a></li>
 				<li><a href="logout.jsp">
 				  <span class="icon"><img src="image/logout.png" alt="logout" /></span>
@@ -116,21 +117,21 @@
 	
 		<div class="main">
 			<div class="top">Hello World!</div>
-			<div class="main-title">가게 정보 수정</div>
+			<div class="main-title">가게 정보</div>
 			<div class="main_contents">
 				<div class="member_category">
 					<div class="title">
-						<span class="text">가게 정보</span>
+						<span class="text">가게 정보 수정</span>
 					</div>
 					<form method="post" action="updateStore_ok.jsp" id="frm" class="frm_store">
 						<table class="tab">
 							<tr>
-								<td>가게 명: </td>
+								<th>가게 명: </th>
 								<td><input type="text" name="store_name" value="<%=store_name %>" class="txt"></td>
 							</tr>
 							
 							<tr>
-								<td>가게 타입: </td>
+								<th>가게 타입: </th>
 								<td>
 									<select name="store_type" id="s_type" class="txt">
 										<option value="general">일반음식점</option>
@@ -141,12 +142,12 @@
 							</tr>
 							
 							<tr>
-								<td>좌석 수: </td>
+								<th>좌석 수: </th>
 								<td><input type="text" name="seat_number" value="<%=seat_number %>" class="txt"></td>
 							</tr> 
 							
 							<tr>
-								<td>주소: </td>
+								<th>주소: </th>
 								<td><input type="text" name="location" value="<%=location %>" class="location"></td>
 							</tr> 
 				
@@ -157,15 +158,15 @@
 				</body>
 				
 				<div class="food_drink">
-					<table class="tab" class=".frm_food">
+					<table class="frm_food">
 							<tr>
 								<th></th>
-								<th>음식</th>
+								<th>음식 명</th>
 								<th>가격</th>
 								<th>원산지</th>
 							</tr>	
 							<% for(int j=0; j<f_count; j++) {%>
-								<form method="post" id="updateOrDeleteFrm" class="frm_food">	
+								<form method="post" id="updateOrDeleteFrm" >	
 									<tr>
 										<td><input type="hidden" name="f_id" value="<%=f_id[j] %>"></td>
 										<td><input type="text" name="f_name" value="<%=f_name[j] %>" class="txt"></td>
@@ -173,43 +174,42 @@
 										<td><input type="text" name="origin" value="<%=origin[n] %>" class="txt"></td>
 										
 										<td>
-										<input type="submit" value="저장" formaction="update_food.jsp">
-										<input type="submit" value="삭제" formaction="delete_food.jsp">
+										<input type="submit" value="저장" formaction="update_food.jsp" class="btn">
+										<input type="submit" value="삭제" formaction="delete_food.jsp" class="btn">
 										</td>
 									</tr>
 								</form>
 							<%n++;} %>
 						</table>
 						
-						<input type="button" onclick="location.href='insert_food.jsp'" value="음식 추가하기"  class="btn">
+						<input type="button" onclick="location.href='insert_food.jsp'" value="음식 추가하기" class="btn_insert">
 						
-						<table class="tab">
+						<table class="frm_drink">
 							<tr>
 								<th></th>	
-								<th>음료</th>
+								<th>음료 명</th>
 								<th>가격</th>
 								<th>주류 여부(Y or N)</th>
 							</tr>
 							<% for(int j=0; j<d_count; j++) {
 								if(d_price[j] != 0) { %>
-									<form method="post" id="updateOrDeleteFrm" class="frm_drink">
+									<form method="post" id="updateOrDeleteFrm">
 										<tr>
-											<td><input type="hidden" name="d_id" value="<%=d_id[j] %>"></td>
-											<td><input type="text" name="d_name" value="<%=d_name[j] %>"></td>
-											<td><input type="text" name="d_price" value="<%=d_price[j] %>"></td>
-											<td><input type="text" name="alcohol" value="<%=alcohol[j] %>"></td>
+											<td><input type="hidden" name="d_id" value="<%=d_id[j] %>" class="txt"></td>
+											<td><input type="text" name="d_name" value="<%=d_name[j] %>" class="txt"></td>
+											<td><input type="text" name="d_price" value="<%=d_price[j] %>" class="txt"></td>
+											<td><input type="text" name="alcohol" value="<%=alcohol[j] %>" class="txt"></td>
 											<td>
-												<input type="submit" formaction="update_drink.jsp" value="저장">
-												<input type="submit" formaction="delete_drink.jsp" value="삭제">
+												<input type="submit" formaction="update_drink.jsp" value="저장" class="btn">
+												<input type="submit" formaction="delete_drink.jsp" value="삭제" class="btn">
 											</td>
 										</tr>
 									</form>
 							<%}} %>
 						</table>
-						<input type="button" onclick="location.href='insert_drink.jsp'" value="음료 추가하기" class="btn">
-						<br><br>
+						<input type="button" onclick="location.href='insert_drink.jsp'" value="음료 추가하기" class="btn_insert">
+						
 					</div>
-					<input type="button" value="뒤로가기" onclick="location.href='homepage.jsp'" class="btn"/>
 				</div>
 			</div>
 		</div>

@@ -9,7 +9,7 @@
 </head>
 <body>
 	<div id="header">
-		<a href="homepage.html" class="logo">DataBase Term Project</a>
+		<a href="homepage.jsp" class="logo">DataBase Term Project</a>
 		<div class="logo-right">COMP322004</div>
 	</div>
 	<div id="body">
@@ -18,8 +18,8 @@
 		</ul>
 		<div class="login-form">
 		<% 
-			session.setAttribute("DBID", "term");
-			session.setAttribute("DBPW", "term");
+			session.setAttribute("DBID", "restaurant");
+			session.setAttribute("DBPW", "restaurant");
 			if(session.getAttribute("userType") == null) {
 		%>
 			<form action="login.jsp" method="post">
@@ -69,7 +69,7 @@
 				<%=session.getAttribute("fname") %><%=session.getAttribute("lname") %>님
 			</div><br>
 			<input type="button" class="btn" value="개인 정보 관리" onclick="location.href='updateOwner.jsp'">
-			<input type="button" class="btn" value="점포 정보" onclick="location.href='OwnerFunc.jsp'">
+			<input type="button" class="btn" value="점포 정보" onclick="location.href='StoreState.jsp'">
 			<input type="button" class="btn" value="예약 관리" onclick="location.href='reserveOwner.jsp'">
 			<input type="button" class="btn" value="Log Out" onclick="location.href='logout.jsp'">
 		</div>
