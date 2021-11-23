@@ -16,8 +16,8 @@
 	String serverIP = "localhost";
 	String strSID = "orcl";
 	String portNum = "1521";
-	String user = "term";
-	String pass = "term";
+	String user = "restaurant";
+	String pass = "restaurant";
 	String url = "jdbc:oracle:thin:@" + serverIP + ":"
 	+ portNum + ":" + strSID;
 	
@@ -25,17 +25,23 @@
 	Class.forName("oracle.jdbc.driver.OracleDriver");
 	conn = DriverManager.getConnection(url, user, pass);
 	Statement stmt = conn.createStatement();
-	
+
 	int f_id = Integer.parseInt(request.getParameter("f_id"));
-	String sql="delete from food where id = ?";
+	
+	String sql="delete from origin where id=?";
 	PreparedStatement ps = conn.prepareStatement(sql);
 	ps.setInt(1, f_id);
-	int rs = ps.executeUpdate();
+	ps.executeUpdate();
+	
+	sql="delete from food where id = ?";
+	ps = conn.prepareStatement(sql);
+	ps.setInt(1, f_id);
+	ps.executeUpdate();
 	
 	ps.close();
 	conn.close();
 	
-	response.sendRedirect("modify_food.jsp");
+	response.sendRedirect("StoreState.jsp");
 %>
 </body>
 </html>

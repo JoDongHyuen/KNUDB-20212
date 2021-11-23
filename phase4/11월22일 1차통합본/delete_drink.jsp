@@ -12,8 +12,8 @@
 	String serverIP = "localhost";
 	String strSID = "orcl";
 	String portNum = "1521";
-	String user = "term";
-	String pass = "term";
+	String user = "restaurant";
+	String pass = "restaurant";
 	String url = "jdbc:oracle:thin:@" + serverIP + ":"
 	+ portNum + ":" + strSID;
 	
@@ -31,7 +31,7 @@
 	ps.close();
 	conn.close();
 	
-	response.sendRedirect("modify_drink.jsp");
+	response.sendRedirect("StoreState.jsp");
 %>
 
 </body>
