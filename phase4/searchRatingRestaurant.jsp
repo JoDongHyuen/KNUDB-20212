@@ -52,7 +52,7 @@ background-color: #f9edff;
 		i++;
 	}
 	
-	session.setAttribute("id", session.getAttribute("id"));
+	session.setAttribute("userId", session.getAttribute("userId"));
 %>
 <br/>
 0~5 까지 평점 매기기, 소숫점 첫째자리까지 가능

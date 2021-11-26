@@ -52,11 +52,11 @@ background-color: #f7fff8;
 			</tr>
 			<tr>
 				<td>비밀번호</td>
-				<td><input type = "text" name = "passWord"/></td>
+				<td><input type = "password" name = "passWord"/></td>
 			</tr>
 			<tr>
 				<td>비밀번호 확인</td>
-				<td><input type = "text" name = "passWord2"/></td>
+				<td><input type = "password" name = "passWord2"/></td>
 			</tr>
 			
 		</table>
@@ -64,6 +64,7 @@ background-color: #f7fff8;
 				value = "제출" >
 		-->
 		<button type = "submit" class="snip1535"> submit </button>
+		<button type = "button" class="snip1535" onClick="location.href='homepage.jsp'"> 뒤로가기 </button>
 		<br/>
 		<br/>
 		<br/>

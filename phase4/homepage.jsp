@@ -69,7 +69,7 @@
 				<%=session.getAttribute("fname") %><%=session.getAttribute("lname") %>님
 			</div><br>
 			<input type="button" class="btn" value="개인 정보 관리" onclick="location.href='updateOwner.jsp'">
-			<input type="button" class="btn" value="점포 정보" onclick="location.href='OwnerFunc.jsp'">
+			<input type="button" class="btn" value="점포 정보" onclick="location.href='StoreState.jsp'">
 			<input type="button" class="btn" value="예약 관리" onclick="location.href='reserveOwner.jsp'">
 			<input type="button" class="btn" value="Log Out" onclick="location.href='logout.jsp'">
 		</div>

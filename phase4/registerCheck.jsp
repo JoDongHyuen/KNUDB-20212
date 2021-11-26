@@ -134,7 +134,7 @@
 	else{
 		email = " " + email;
 		//typeOfP = "customer"; gender = "male";
-		if(typeOfP == "customer"){
+		if(typeOfP.equals("customer")){
 			String query = "insert into information values('"
 					+ email + "', '" + passWord + "', 'customer')";
 			int res = stmt.executeUpdate(query);
@@ -162,11 +162,12 @@
 					+ email + "', '" + passWord + "', 'owner')";
 			int res = stmt.executeUpdate(query);
 			
-			query = "select Bnum from owner order by Bnum asc";
+			query = "select COUNT(*) from STORE";
 			rs = stmt.executeQuery(query);
 			int lastNum = 0;
 			while(rs.next()){	
 				lastNum = rs.getInt(1);
+				break;
 			}
 			lastNum++;
 			//store 에 미리 breg_number 추가 -> 무결성 위약조건 때문에

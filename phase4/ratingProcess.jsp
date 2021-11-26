@@ -11,7 +11,7 @@
 <body>
 
 <%
-	String id = String.valueOf(session.getAttribute("id"));
+	String id = String.valueOf(session.getAttribute("userId"));
 	String r = String.valueOf(request.getParameter("rating"));
 	String str = new String(request.getParameter("rst").getBytes("8859_1"), "EUC-KR");
 	int Bnum = 0;
@@ -47,9 +47,9 @@
 	if(rs.next())
 		Bnum = rs.getInt(1);
 	id = " " + id; // 공백처리
-	query = "insert into rating values(" + Bnum + ", '" +  id + "', "
-			+ rating + ", " + ratingId + ")";
+	query = "insert into rating values(" + Bnum + ", '" +  id + "', " + rating + ", " + ratingId + ")";
 	
+	System.out.println(query);
 	int res = stmt.executeUpdate(query);
 	
 	//pstmt = conn.prepareStatement(query);

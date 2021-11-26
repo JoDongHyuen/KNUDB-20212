@@ -36,10 +36,7 @@ background-color: #f9edff;
   	out.print("<h2>" + fname);
   	String lname = String.valueOf(session.getAttribute("lname"));
     	out.print(lname + " 님의 예약 리스트 입니다.</h2>");
-    String id = String.valueOf(session.getAttribute("id"));
-    session.setAttribute("fname", fname);
-    session.setAttribute("lname", lname);
-    session.setAttribute("id", id);
+    String id = String.valueOf(session.getAttribute("userId"));
     	
   	String query = "SELECT C.Fname, C.Lname, TO_CHAR(B.Time, 'YYYY-MM-DD HH24:MI:SS'), S.Store_name "
   	+ "FROM CUSTOMER C,  CUST_BOOKS_STR B, STORE S "
@@ -78,6 +75,7 @@ background-color: #f9edff;
 <input type = "text" name = "search">
 <br/>
 <button type = "submit" class="snip1535"> 검색 </button>
+<button type = "button" class="snip1535" onClick="location.href='homepage.jsp'"> 뒤로가기 </button>
  <!-- <input type = "submit"	value = "검색" >
 -->
 <br/><br/><br/> https://nanati.me/html_css_table_design/ 에서 표 디자인 가져옴

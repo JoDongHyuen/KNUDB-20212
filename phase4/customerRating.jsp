@@ -38,7 +38,7 @@ background-color: #F8FFE0;
     
   	String fname = String.valueOf(session.getAttribute("fname"));
   	String lname = String.valueOf(session.getAttribute("lname"));
-    String id = String.valueOf(session.getAttribute("id"));
+    String id = String.valueOf(session.getAttribute("userId"));
     session.setAttribute("fname", fname);
     session.setAttribute("lname", lname);
     session.setAttribute("id", id);
@@ -72,15 +72,12 @@ background-color: #F8FFE0;
     <input type = "text" name = "search">
 <br/>
 <button type = "submit" class="snip1535"> 검색 </button>
+<button type = "button" class="snip1535" onClick="location.href='homepage.jsp'"> 뒤로가기 </button>
  <!-- <input type = "submit"	value = "검색" >
 -->
 <br/><br/><br/> https://nanati.me/html_css_table_design/ 에서 표 디자인 가져옴
 <br/>https://nanati.me/css-button-design/ 에서 검색 디자인 가져옴
 
-<%
-
-	session.setAttribute("id", session.getAttribute("id"));
-%>
 
 </center>
 </form>
