@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Lab #9</title>
+</head>
+<body>
+	<h1>Lab #9: Repeating Lab #5-3 via JSP</h1>
+	<h3>Query 1: Search for employees satisfying the following conditions:</h3>
+
+	<form method="post" action="response.jsp">
+		<span>
+			Project name: 
+			<select name="pname1">
+				<option value="Computerization" selected>Computerization</option>
+				<option value="NewBenefits">NewBenefits</option>
+				<option value="ProductX">ProductX</option>
+				<option value="ProductY">ProductY</option>
+				<option value="ProductZ">ProductZ</option>
+				<option value="Reorganization">Reorganization</option>
+			</select>
+			
+			Department number:
+			<select name="dnum">
+				<option value="1" selected>1</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+			</select>
+			
+			Salary: <input type="text" name="salary"/>
+		</span>
+		
+		<h3>Query 2: Search for employees satisfying the following conditions:</h3>
+		<span>
+			Supervisor's SSN: <input type="text" name="super_ssn">
+			Address: <input type="text" name="address">
+		</span>
+		
+		<h3>Query 3: Search for employees working on:</h3>
+		<span>
+			Project name: 
+			<select name="pname3">
+				<option value="Computerization" selected>Computerization</option>
+				<option value="NewBenefits" selected>NewBenefits</option>
+				<option value="ProductX" selected>ProductX</option>
+				<option value="ProductY" selected>ProductY</option>
+				<option value="ProductZ" selected>ProductZ</option>
+				<option value="Reorganization" selected>Reorganization</option>
+			</select>
+		</span>
+		
+		<h3>Query 4: Search for employees working on:</h3>
+		<span>
+			Project name: 
+			<select name="pname4">
+				<option value="Computerization" selected>Computerization</option>
+				<option value="NewBenefits" selected>NewBenefits</option>
+				<option value="ProductX" selected>ProductX</option>
+				<option value="ProductY" selected>ProductY</option>
+				<option value="ProductZ" selected>ProductZ</option>
+				<option value="Reorganization" selected>Reorganization</option>
+			</select>
+			Working hours: <input type="text" name="hours">
+		</span>
+		
+		<h3>Query 5: Search for a supervisee(s) and his/her dependent(s) with:</h3>
+		<span>
+			Supervisor's SSN: <input type="text" name="super_ssn5">
+		</span>
+		
+		<br>
+		<input type="reset" value="reset"/><input type="submit" value="submit"/>
+	</form>
+</body>
+</html>
