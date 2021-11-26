@@ -1,5 +1,0 @@
-INDEX VERSION 1.131+C:\Users\rhsnf\¹®¼­\GitHub\KNUDB-20212\phase4\.metadata\.plugins\org.eclipse.jdt.core
-851528089.index
-961091095.index
-2883064424.index
-1865797976.index
