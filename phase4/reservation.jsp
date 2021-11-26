@@ -67,7 +67,7 @@
 		String id = String.valueOf(session.getAttribute("userId"));
 
 		sql = "insert into cust_books_str values(' " + id + "', " + bNum + ", " + time + ", 'YYYY-MM-DD HH24:MI:SS'))";
-		System.out.println(sql);
+		//System.out.println(sql);
 		int res = stmt.executeUpdate(sql);
 		conn.commit();
 		

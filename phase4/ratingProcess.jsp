@@ -49,7 +49,7 @@
 	id = " " + id; // 공백처리
 	query = "insert into rating values(" + Bnum + ", '" +  id + "', " + rating + ", " + ratingId + ")";
 	
-	System.out.println(query);
+	//System.out.println(query);
 	int res = stmt.executeUpdate(query);
 	
 	//pstmt = conn.prepareStatement(query);
