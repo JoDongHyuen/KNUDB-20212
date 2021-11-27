@@ -52,7 +52,7 @@
 	ps.setString(2, origin);
 	ps.executeUpdate();
 	
-	response.sendRedirect("modify_food.jsp");
+	response.sendRedirect("StoreState.jsp");
 %>
 </body>
 </html>

@@ -5,10 +5,10 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<link rel="stylesheet" href="css/navigation.css" />
+<link rel="stylesheet" href="css/navigation12.css" />
 <link rel="stylesheet" href="css/main.css" />
 <link rel="stylesheet" href="css/StoreState.css" />
-<title>점포 수정</title>
+<title>가게 정보</title>
 </head>
 <body>
 
@@ -108,6 +108,22 @@
 				  <span class="icon"><img src="image/shop.png" alt="shop" /></span>
 				  <span class="title">가게 정보</span>
 				</a></li>
+				<li><a href="Owner_Query2.jsp">
+				  <span class="icon"><img src="image/review.png" alt="review" /></span>
+				  <span class="title">리뷰 조회</span>
+				</a></li>
+				<li><a href="Owner_Query3.jsp">
+				  <span class="icon"><img src="image/review2.png" alt="review" /></span>
+				  <span class="title">특정 점수 이상 준<br> 고객 조회</span>
+				</a></li>
+				<li><a href="Owner_Query4.jsp">
+				  <span class="icon"><img src="image/date.png" alt="review" /></span>
+				  <span class="title">특정 날짜 이후<br> 예약 조회</span>
+				</a></li>
+				<li><a href="Owner_Query5.jsp">
+				  <span class="icon"><img src="image/same_type.png" alt="review" /></span>
+				  <span class="title">동종업계 가게 및<br> 평점 조회</span>
+				</a></li>
 				<li><a href="logout.jsp">
 				  <span class="icon"><img src="image/logout.png" alt="logout" /></span>
 				  <span class="title">Log Out</span>
@@ -152,7 +168,7 @@
 							</tr> 
 				
 						</table>
-						<input type="submit" value="수정" onclick="password_check" class="btn">
+						<input type="submit" value="수정" class="btn">
 					</form>
 					
 				</body>
@@ -186,10 +202,14 @@
 						
 						<table class="frm_drink">
 							<tr>
-								<th></th>	
-								<th>음료 명</th>
-								<th>가격</th>
-								<th>주류 여부(Y or N)</th>
+								<% 
+									if(d_count != 0){
+										out.println("<th></th>");	
+										out.println("<th>음료 명</th>");
+										out.println("<th>가격</th>");
+										out.println("<th>주류 여부(Y or N)</th>");
+									}
+								%>
 							</tr>
 							<% for(int j=0; j<d_count; j++) {
 								if(d_price[j] != 0) { %>
@@ -213,8 +233,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
-	
+	</div>	
 	<script type="text/javascript">
 	function fnUserModify(pageUrl) { 
 		var frm = document.getElementById("updateOrDeleteFrm");

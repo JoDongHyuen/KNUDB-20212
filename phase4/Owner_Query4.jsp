@@ -8,15 +8,37 @@
 <link rel="stylesheet" href="css/navigation12.css" />
 <link rel="stylesheet" href="css/main.css" />
 <link rel="stylesheet" href="css/StoreState.css" />
-<title>점포 음식 추가</title>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
+<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+<title>예약 조회</title>
 </head>
 <body>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+            $.datepicker.setDefaults($.datepicker.regional['ko']); 
+
+            $( "#endDate" ).datepicker({
+                 changeMonth: true, 
+                 changeYear: true,
+                 nextText: '다음 달',
+                 prevText: '이전 달', 
+                 dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
+                 dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'], 
+                 monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+                 monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+                 dateFormat: "yy-m-dd",
+            });    
+    });
+</script>
 <%
 	String userId = session.getAttribute("userId").toString();
 	int bnum = (int)session.getAttribute("bnum");
 	session.setAttribute("userId", userId);
 	session.setAttribute("bnum", bnum);
 	
+	session.setAttribute("userId", userId);
 	String serverIP = "localhost";
 	String strSID = "orcl";
 	String portNum = "1521";
@@ -39,8 +61,7 @@
 		store_name = rs.getString(1);
 	}
 %>
-
-<div class="container">
+	<div class="container">
 		<div class="navigation">
 			<div class="logo">
 				<a class="logo2" href="homepage.jsp">Database</a>
@@ -79,38 +100,60 @@
 	
 		<div class="main">
 			<div class="top">Hello World!</div>
-			<div class="main-title">음식 추가</div>
+			<div class="main-title">특정 날짜 이후 예약 조회</div>
 			<div class="main_contents">
 				<div class="member_category">
 					<div class="title">
 						<span class="text"><%=store_name %></span>
 					</div>
 					<div class="member_list">
-
+						<form method="post" action="Owner_Query4.jsp" class="query_frm">
+							<table>
+								<tr>
+									<th>날짜</th>
+									<td><input type="text" name="date" id="endDate"	class="txt" placeholder="Click!">
+									<input type="submit" value="조회" class="btn">
+								</tr>
+							</table>
+						</form>
 						<table class="member_entity">
 							<thead>
-
+								<tr>
+									<th style="width: 100px">고객 명</th>
+									<th style="width: 100px">날짜	</th>
+								</tr>
 							</thead>
-
+							<%
+								userId=" "+userId;
+								
+								try{
+									String date = request.getParameter("date");
+									sql = "SELECT C.Fname, C.Lname, TO_CHAR(B.Time, 'YYYY-MM-DD HH24:MI:SS') as B_date "
+										  + " FROM CUSTOMER C,  CUST_BOOKS_STR B, OWNER O "
+										  + " WHERE B.Time > ?  AND C.Customer_email = B.Cemail "
+										  + " AND O.Owner_email = ? and O.Bnum = B.Bnum "
+										  + " ORDER BY B.time";
+									
+									ps = conn.prepareStatement(sql);
+									ps.setString(1, date);
+									ps.setString(2, userId);
+									rs = ps.executeQuery();
+									while(rs.next()){
+										out.println("<tr>");
+										out.println("<td style='width: 100px'>"+rs.getString(1)+ rs.getString(2) +"</td>");
+										out.println("<td style='width: 100px'>"+rs.getString(3)+"</td>");
+										out.println("</tr>");
+									}
+								}
+								catch(Exception e){
+									e.printStackTrace();
+								}
+								finally{
+									stmt.close();
+									conn.close();
+								}
+							%>
 							<tbody>
-								<form method="post" action="insert_food_ok.jsp" class="query_frm">
-									<table>
-										<tr>
-											<td>음식 이름</td>
-											<td><input type="text" name="f_name" placeholder="음식 이름" class="txt">
-										</tr>
-										<tr>
-											<td>가격</td>
-											<td><input type="text" name="f_price" placeholder="가격" class="txt">
-										</tr>
-										<tr>
-											<td>원산지</td>
-											<td><input type="text" name="origin" placeholder="원산지" class="txt">
-										</tr>
-									</table>
-									<input type="submit" value="저장" class="btn">
-									<input type="button" value="취소" onclick="history.back();"class="btn" />
-								</form>
 							</tbody>
 						</table>
 					</div>

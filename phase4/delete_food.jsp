@@ -35,7 +35,7 @@
 	ps.close();
 	conn.close();
 	
-	response.sendRedirect("modify_food.jsp");
+	response.sendRedirect("StoreState.jsp");
 %>
 </body>
 </html>

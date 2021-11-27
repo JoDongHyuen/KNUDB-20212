@@ -33,32 +33,33 @@
 				<a class="logo2" href="homepage.jsp">Database</a>
 			</div>
 			<ul>
-				<li><a href="Search_Query1.jsp">
-				  <span class="title">특정 가격<br> 이하 음식 조회</span>
+				<li><a href="#">
+				  <span class="icon"><img src="image/customer.png" alt="customer" /></span>
+				  <span class="title">고객 관리</span>
 				</a></li>
-				<li><a href="Search_Query2.jsp">
-				  <span class="title">평가 특정<br> 개수 이상</span>
+				<li><a href="StoreState.jsp">
+				  <span class="icon"><img src="image/shop.png" alt="shop" /></span>
+				  <span class="title">가게 정보</span>
 				</a></li>
-				<li><a href="Search_Query3.jsp">
-				  <span class="title">평균 평점 이상<br> 가게 조회</span>
+				<li><a href="Owner_Query2.jsp">
+				  <span class="icon"><img src="image/review.png" alt="review" /></span>
+				  <span class="title">리뷰 조회</span>
 				</a></li>
-				<li><a href="Search_Query4.jsp">
-				  <span class="title">특정 평점 있는<br> 가게 조회</span>
+				<li><a href="Owner_Query3.jsp">
+				  <span class="icon"><img src="image/review2.png" alt="review" /></span>
+				  <span class="title">특정 점수 이상 준<br> 고객 조회</span>
 				</a></li>
-				<li><a href="Search_Query5.jsp">
-				  <span class="title">주류가 있는<br> 가게 조회</span>
+				<li><a href="Owner_Query4.jsp">
+				  <span class="icon"><img src="image/date.png" alt="review" /></span>
+				  <span class="title">특정 날짜 이후<br> 예약 조회</span>
 				</a></li>
-				<li><a href="Search_Query6.jsp">
-				  <span class="title">특정 원산지<br> 음식 조회</span>
+				<li><a href="Owner_Query5.jsp">
+				  <span class="icon"><img src="image/same_type.png" alt="review" /></span>
+				  <span class="title">동종업계 가게 및<br> 평점 조회</span>
 				</a></li>
-				<li><a href="Search_Query7.jsp">
-				  <span class="title">판매 음식이 모두<br> 특정 원산지인 가게 조회</span>
-				</a></li>
-				<li><a href="Search_Query8.jsp">
-				  <span class="title">판매 음료가 모두 주류<br> 또는 음료수인 가게 이름 조회</span>
-				</a></li>
-				<li><a href="Search_Query9.jsp">
-				  <span class="title">특정 가격 이상<br> 음식이 있는 가게 조회</span>
+				<li><a href="logout.jsp">
+				  <span class="icon"><img src="image/logout.png" alt="logout" /></span>
+				  <span class="title">Log Out</span>
 				</a></li>
 			</ul>
 		</div>

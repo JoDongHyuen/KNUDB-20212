@@ -8,15 +8,17 @@
 <link rel="stylesheet" href="css/navigation12.css" />
 <link rel="stylesheet" href="css/main.css" />
 <link rel="stylesheet" href="css/StoreState.css" />
-<title>점포 음식 추가</title>
+<title>동종업계 가게 조회</title>
 </head>
 <body>
+
 <%
 	String userId = session.getAttribute("userId").toString();
 	int bnum = (int)session.getAttribute("bnum");
 	session.setAttribute("userId", userId);
 	session.setAttribute("bnum", bnum);
 	
+	session.setAttribute("userId", userId);
 	String serverIP = "localhost";
 	String strSID = "orcl";
 	String portNum = "1521";
@@ -39,8 +41,7 @@
 		store_name = rs.getString(1);
 	}
 %>
-
-<div class="container">
+	<div class="container">
 		<div class="navigation">
 			<div class="logo">
 				<a class="logo2" href="homepage.jsp">Database</a>
@@ -79,38 +80,64 @@
 	
 		<div class="main">
 			<div class="top">Hello World!</div>
-			<div class="main-title">음식 추가</div>
+			<div class="main-title">동종업계 가게 및 평점 조회</div>
 			<div class="main_contents">
 				<div class="member_category">
 					<div class="title">
 						<span class="text"><%=store_name %></span>
 					</div>
 					<div class="member_list">
-
+						<form method="post" action="Owner_Query5.jsp" class="query_frm">
+						</form>
 						<table class="member_entity">
 							<thead>
-
+								<tr>
+									<th style="width: 100px">가게 명</th>
+									<th style="width: 100px">평균 가격</th>
+									<th style="width: 100px">평균 평점</th>
+								</tr>
 							</thead>
-
+							<%
+								userId=" "+userId;
+								
+								sql = "CREATE VIEW TEMP1 AS SELECT Bnum, Avg(Price) as Avg_price FROM FOOD GROUP BY Bnum";
+								stmt.executeUpdate(sql);
+	
+								sql = "CREATE VIEW TEMP2 AS SELECT Bnum, Round(Avg(Score),2) AS Avg_score FROM RATING GROUP BY Bnum";
+								stmt.executeUpdate(sql);
+							
+								try{
+									sql = "SELECT S.Store_name, T1.Avg_price, T2.Avg_score "
+										  + " FROM TEMP1 T1, TEMP2 T2, STORE S "
+										  + " WHERE T1.Bnum = T2.Bnum AND S.Breg_number = T1.Bnum "
+										  + " AND S.Store_type in(  SELECT Store_type S2 FROM STORE S2, OWNER O "
+										  + " WHERE O.Owner_email = ? AND S2.breg_number = O.bnum) order by avg_score desc";
+									
+									ps = conn.prepareStatement(sql);
+									ps.setString(1, userId);
+									rs = ps.executeQuery();
+									while(rs.next()){
+										out.println("<tr>");
+										out.println("<td style='width: 100px'>"+rs.getString(1) +"</td>");
+										out.println("<td style='width: 100px'>"+rs.getInt(2)+"</td>");
+										out.println("<td style='width: 100px'>"+rs.getFloat(3)+"</td>");
+										out.println("</tr>");
+									}
+								}
+								catch(Exception e){
+									e.printStackTrace();
+								}
+								finally{
+									sql = "DROP VIEW TEMP1";
+									stmt.executeUpdate(sql);
+									sql = "DROP VIEW TEMP2";
+									stmt.executeUpdate(sql);
+									
+									stmt.close();
+									conn.close();
+								}
+							%>
 							<tbody>
-								<form method="post" action="insert_food_ok.jsp" class="query_frm">
-									<table>
-										<tr>
-											<td>음식 이름</td>
-											<td><input type="text" name="f_name" placeholder="음식 이름" class="txt">
-										</tr>
-										<tr>
-											<td>가격</td>
-											<td><input type="text" name="f_price" placeholder="가격" class="txt">
-										</tr>
-										<tr>
-											<td>원산지</td>
-											<td><input type="text" name="origin" placeholder="원산지" class="txt">
-										</tr>
-									</table>
-									<input type="submit" value="저장" class="btn">
-									<input type="button" value="취소" onclick="history.back();"class="btn" />
-								</form>
 							</tbody>
 						</table>
 					</div>
