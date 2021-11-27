@@ -196,7 +196,7 @@
 	}
 
 	out.print("음식 이름 : " + foodName + "<br/>");	
-	out.print("원산지 : " + price + "<br/>");
+	out.print("가격 : " + price + " 원<br/>");
 	out.print("점수 : " + score + " 점 <br/><br/><br/>");	
 	out.print("<center> 최고의 음식 칭찬합니다. </center>");	
 	
