@@ -193,7 +193,7 @@
 			out.println("</script>");
 			
 		}
-		
+		rs.close();
 
 		response.sendRedirect("homepage.jsp");
 	}
