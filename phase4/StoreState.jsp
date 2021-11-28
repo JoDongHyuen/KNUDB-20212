@@ -100,10 +100,6 @@
 				<a class="logo2" href="homepage.jsp">Database</a>
 			</div>
 			<ul>
-				<li><a href="#">
-				  <span class="icon"><img src="image/customer.png" alt="customer" /></span>
-				  <span class="title">고객 관리</span>
-				</a></li>
 				<li><a href="StoreState.jsp">
 				  <span class="icon"><img src="image/shop.png" alt="shop" /></span>
 				  <span class="title">가게 정보</span>

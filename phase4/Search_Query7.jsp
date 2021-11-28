@@ -38,7 +38,7 @@
 				  <span class="title">특정 가격<br> 이하 음식 조회</span>
 				</a></li>
 				<li><a href="Search_Query2.jsp">
-				  <span class="title">평가 특정<br> 개수 이상</span>
+				  <span class="title">평가 특정<br> 개수 이상 가게 조회</span>
 				</a></li>
 				<li><a href="Search_Query3.jsp">
 				  <span class="title">평균 평점 이상<br> 가게 조회</span>
