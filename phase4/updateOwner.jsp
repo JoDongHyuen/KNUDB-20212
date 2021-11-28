@@ -51,8 +51,8 @@ body{
 					<td><input type="password" name="pw_ck"></td>
 				</tr>
 			</table>
-			<input type="submit" value="수정">
-			<input type="button" value="취소" onclick="history.back();" />
+			<input type="submit" value="수정" class="snip1535">
+			<input type="button" value="취소" onclick="history.back();" class="snip1535"/>
 		</form>
 	<br><br><br>
 	
