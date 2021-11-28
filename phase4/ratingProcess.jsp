@@ -62,6 +62,10 @@
 	out.println("alert('평점 평가 완료!!');");
 	response.sendRedirect("customerRating.jsp");
 	
+	stmt.close();
+	//pstmt.close();
+	rs.close();
+	conn.close();
 	
 %>
 

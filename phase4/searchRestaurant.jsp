@@ -55,7 +55,11 @@ background-color: #e0fdff;
 		
 		i++;
 	}
-
+	//stmt.close();
+	pstmt.close();
+	rs.close();
+	conn.close();
+	
 %>
 
 <!-- ex) 2021년 10월 4일 15시 41분 35초인경우

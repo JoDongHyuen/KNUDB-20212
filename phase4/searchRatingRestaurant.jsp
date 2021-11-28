@@ -53,6 +53,11 @@ background-color: #f9edff;
 	}
 	
 	session.setAttribute("userId", session.getAttribute("userId"));
+	//stmt.close();
+	pstmt.close();
+	rs.close();
+	conn.close();
+	
 %>
 <br/>
 0~5 까지 평점 매기기, 소숫점 첫째자리까지 가능

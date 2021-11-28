@@ -62,6 +62,12 @@ background-color: #f9edff;
 	out.println("</table>");
 	out.println("<br/>");
 	out.println("<br/>");
+	
+	//stmt.close();
+	pstmt.close();
+	rs.close();
+	conn.close();
+	
   // 예약한 음식점 띄우기 완료 //
 	
 	

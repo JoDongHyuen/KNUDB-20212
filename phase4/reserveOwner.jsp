@@ -73,7 +73,7 @@ background-color: #fff4e8;
   	}
 	out.println("</table>");
 
-	
+	rs.close();
 	stmt.close();
 	conn.close();
 %>

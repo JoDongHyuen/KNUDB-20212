@@ -92,6 +92,12 @@
 		//out.println("history.back();");
 		out.println("</script>");
 
+		stmt.close();
+		//pstmt.close();
+		rs.close();
+		conn.close();
+		
+		
 		response.sendRedirect("reserveCustomer.jsp");
 	%>
 
