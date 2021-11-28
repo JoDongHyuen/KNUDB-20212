@@ -66,6 +66,9 @@ background-color: #F8FFE0;
 	out.println("</table>");
 	out.println("<br/>");
 	out.println("<br/>");
+	rs.close();
+	pstmt.close();
+	conn.close();
 	%>
 	<h2> 식당을 검색하세요</h2>
 	<br/>
