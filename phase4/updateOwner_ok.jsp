@@ -25,14 +25,14 @@
 	String userId = session.getAttribute("userId").toString();
 	String pw = request.getParameter("pw");
 	String pw_ck = request.getParameter("pw_ck");
-	String fname = new String(request.getParameter("fname").getBytes("8859_1"),"KSC5601");   
-	String lname = new String(request.getParameter("lname").getBytes("8859_1"),"KSC5601");   
-	String phone1 = request.getParameter("phone1");
-	String phone2 = request.getParameter("phone2");
-	String phone3 = request.getParameter("phone3");
+	String name = new String(request.getParameter("name").getBytes("8859_1"),"KSC5601");
+	
+	String fname = name.substring(0, 1);
+	String lname = name.substring(1, name.length());
+	
+	String phone_number = request.getParameter("phone");
 	String temp = request.getParameter("age");
 	int age = Integer.parseInt(temp);
-	String phone_number = phone1 + "-" + phone2 + "-" + phone3; 
 	
 	String sql = "update owner set fname='" + fname + "', lname='" + lname + "', phone_number='" +
 				phone_number + "', age=" + age + " where owner_email like '%" + userId + "%'";
@@ -60,9 +60,6 @@
 		
 		response.sendRedirect("homepage.jsp");
 	}
-	else if (res==0){
-		out.println(sql);
-	}	
 	
 	conn.close();
 	stmt.close();

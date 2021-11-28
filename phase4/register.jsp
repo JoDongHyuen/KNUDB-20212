@@ -3,13 +3,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <style type = "text/css">
+<style type = "text/css">
 body{
-background-color: #f7fff8;
+	background-color: #f7fff8;
 }
 </style>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
+<title>회원가입</title>
 <link rel="stylesheet" href="css/custom.css">
 </head>
 <body>
