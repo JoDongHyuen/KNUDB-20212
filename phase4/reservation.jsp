@@ -67,9 +67,25 @@
 		String id = String.valueOf(session.getAttribute("userId"));
 
 		sql = "insert into cust_books_str values(' " + id + "', " + bNum + ", " + time + ", 'YYYY-MM-DD HH24:MI:SS'))";
-		//System.out.println(sql);
-		int res = stmt.executeUpdate(sql);
-		conn.commit();
+		boolean state = false;
+		try{
+			int res = stmt.executeUpdate(sql);
+			conn.commit();
+			state = true;
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			try{
+				if(state){
+					conn.commit();
+				}else{
+					conn.rollback();
+				}
+				
+			}catch(SQLException e){
+				e.printStackTrace();
+			}
+		}
 		
 		out.println("<script type='text/javascript'>");
 		out.println("alert('예약되었습니다!!');");
