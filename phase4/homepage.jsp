@@ -159,7 +159,10 @@
 	out.print("°¡°Ý : " + price + " ¿ø<br/><br/><br/>");	
 	out.print("<center> </center>");	
 	
-	
+	rs.close();
+	ps.close();
+	stmt.close();
+	conn.close();
 		
 %>
 	
