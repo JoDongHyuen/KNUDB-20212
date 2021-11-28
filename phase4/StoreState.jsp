@@ -132,7 +132,7 @@
 		</div>
 	
 		<div class="main">
-			<div class="top">Hello World!</div>
+			<div class="top"></div>
 			<div class="main-title">가게 정보</div>
 			<div class="main_contents">
 				<div class="member_category">

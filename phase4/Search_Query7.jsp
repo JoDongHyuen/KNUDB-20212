@@ -64,7 +64,7 @@
 			</ul>
 		</div>
 		<div class="main">
-			<div class="top">Hello World!</div>
+			<div class="top"></div>
 			<div class="main-title">SEARCH</div>
 			<div class="main_contents">
 				<div class="member_category">

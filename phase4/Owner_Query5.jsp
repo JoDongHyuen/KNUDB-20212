@@ -79,7 +79,7 @@
 		</div>
 	
 		<div class="main">
-			<div class="top">Hello World!</div>
+			<div class="top"></div>
 			<div class="main-title">동종업계 가게 및 평점 조회</div>
 			<div class="main_contents">
 				<div class="member_category">
