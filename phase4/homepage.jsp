@@ -103,7 +103,7 @@
 	int j = 0;
 	String strName = "";
 	String strLoc = "";
-	int score = 0;
+	double score = 0;
 	Random random = new Random();
 	i = random.nextInt(i) + 1;
 	while(rs.next()){
@@ -111,7 +111,7 @@
 		if(i == j){
 			strName = rs.getString(1);
 			strLoc = rs.getString(2);
-			score = rs.getInt(3);
+			score = rs.getDouble(3);
 			break;
 		}
 	}
@@ -168,7 +168,7 @@
 <%
 	sql = "select distinct f.food_name, f.price, r.score from food f, rating r where f.bnum = r.bnum and r.score in("
 			+ "select max(score)    from rating " + "group by r.bnum)";	
-	System.out.println(sql);
+	//System.out.println(sql);
 	ps = conn.prepareStatement(sql);
 	rs = stmt.executeQuery(sql);
 	rsmd = rs.getMetaData();
