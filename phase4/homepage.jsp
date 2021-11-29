@@ -19,8 +19,8 @@
 		</ul>
 		<div class="login-form">
 		<% 
-			session.setAttribute("DBID", "restaurant");
-			session.setAttribute("DBPW", "restaurant");
+			session.setAttribute("DBID", "term");
+			session.setAttribute("DBPW", "term");
 			if(session.getAttribute("userType") == null) {
 		%>
 			<form action="login.jsp" method="post">
@@ -72,8 +72,8 @@
 	String serverIP = "localhost";
 	String strSID = "orcl";
 	String portNum = "1521";
-	String user = "restaurant";
-	String pass = "restaurant";
+	String user = (String)session.getAttribute("DBID");
+	String pass = (String)session.getAttribute("DBPW");
 	String url = "jdbc:oracle:thin:@" + serverIP + ":" + portNum + ":" + strSID;
 	
 	Connection conn = null;
@@ -158,11 +158,6 @@
 	out.print("원산지 : " + CountryName + "<br/>");
 	out.print("가격 : " + price + " 원<br/><br/><br/>");	
 	out.print("<center> </center>");	
-	
-	rs.close();
-	ps.close();
-	stmt.close();
-	conn.close();
 		
 %>
 	
@@ -172,7 +167,8 @@
 		<center> <h2>최고 평점 음식 소개</h2></center>
 <%
 	sql = "select distinct f.food_name, f.price, r.score from food f, rating r where f.bnum = r.bnum and r.score in("
-			+ "select max(score)    from rating " + "group by r.bnum)";		
+			+ "select max(score)    from rating " + "group by r.bnum)";	
+	System.out.println(sql);
 	ps = conn.prepareStatement(sql);
 	rs = stmt.executeQuery(sql);
 	rsmd = rs.getMetaData();
@@ -203,7 +199,10 @@
 	out.print("점수 : " + score + " 점 <br/><br/><br/>");	
 	out.print("<center> 최고의 음식 칭찬합니다. </center>");	
 	
-	
+	rs.close();
+	ps.close();
+	stmt.close();
+	conn.close();
 		
 %>
 

@@ -65,6 +65,7 @@ background-color: #f9edff;
 <input type = "text" name = "rating" size = 2>
 <br/>
 <button type = "submit" class="snip1535"> 입력 </button>
+<button type = "button" class="snip1535" onClick="location.href='customerRating.jsp'"> 뒤로가기 </button>
 <br/><br/><br/> https://nanati.me/html_css_table_design/ 에서 검색 디자인 가져옴
  </form>
 </body>

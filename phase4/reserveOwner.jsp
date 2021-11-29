@@ -78,6 +78,7 @@ background-color: #fff4e8;
 	conn.close();
 %>
 <br/><br/><br/>
+<button type = "button" class="snip1535" onClick="location.href='homepage.jsp'"> 뒤로가기 </button>
 <br/><br/><br/> https://nanati.me/html_css_table_design/ 에서 표 디자인 가져옴
 </center>
 </body>

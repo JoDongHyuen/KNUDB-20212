@@ -82,6 +82,7 @@ background-color: #e0fdff;
 
 <br/>
 <button type = "submit" class="snip1535"> 예약 </button>
+<button type = "button" class="snip1535" onClick="location.href='reserveCustomer.jsp'"> 뒤로가기 </button>
 		<br/>
 <br/><br/><br/> https://nanati.me/html_css_table_design/ 에서 예약 버튼 디자인 가져옴
 </center>

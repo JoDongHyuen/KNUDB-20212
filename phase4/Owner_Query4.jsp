@@ -42,8 +42,8 @@
 	String serverIP = "localhost";
 	String strSID = "orcl";
 	String portNum = "1521";
-	String user = "restaurant";
-	String pass = "restaurant";
+	String user = (String)session.getAttribute("DBID");
+	String pass = (String)session.getAttribute("DBPW");
 	String url = "jdbc:oracle:thin:@" + serverIP + ":"
 	+ portNum + ":" + strSID;
 	
@@ -87,9 +87,9 @@
 				  <span class="icon"><img src="image/same_type.png" alt="review" /></span>
 				  <span class="title">동종업계 가게 및<br> 평점 조회</span>
 				</a></li>
-				<li><a href="logout.jsp">
-				  <span class="icon"><img src="image/logout.png" alt="logout" /></span>
-				  <span class="title">Log Out</span>
+				<li><a href="homepage.jsp">
+				  <span class="icon"><img src="image/logout.png" alt="undo" /></span>
+				  <span class="title">뒤로가기</span>
 				</a></li>
 			</ul>
 		</div>
