@@ -172,10 +172,14 @@
 				<div class="food_drink">
 					<table class="frm_food">
 							<tr>
-								<th></th>
-								<th>음식 명</th>
-								<th>가격</th>
-								<th>원산지</th>
+							<% 
+								if(f_count != 0){
+									out.println("<th></th>");
+									out.println("<th>음식 명</th>");
+									out.println("<th>가격</th>");
+									out.println("<th>원산지</th>");
+								}
+							%>
 							</tr>	
 							<% for(int j=0; j<f_count; j++) {%>
 								<form method="post" id="updateOrDeleteFrm" >	

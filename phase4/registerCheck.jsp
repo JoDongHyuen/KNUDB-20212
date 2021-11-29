@@ -158,40 +158,54 @@
 			out.println("</script>");
 		}
 		else{
-			String query = "insert into information values('"
-					+ email + "', '" + passWord + "', 'owner')";
-			int res = stmt.executeUpdate(query);
+			conn.setAutoCommit(false);//transaction 추가
 			
-			query = "select COUNT(*) from STORE";
-			rs = stmt.executeQuery(query);
-			int lastNum = 0;
-			while(rs.next()){	
-				lastNum = rs.getInt(1);
-				break;
+			try{
+				String query = "insert into information values('"
+						+ email + "', '" + passWord + "', 'owner')";
+				int res = stmt.executeUpdate(query);
+				
+				query = "select COUNT(*) from STORE";
+				rs = stmt.executeQuery(query);
+				int lastNum = 0;
+				while(rs.next()){	
+					lastNum = rs.getInt(1);
+					break;
+				}
+				lastNum++;
+				//store 에 미리 breg_number 추가 -> 무결성 위약조건 때문에
+				query = "insert into store values (" + lastNum
+						+ ", '가게 이름 입력', '', 0, '주소 입력')"; // 일단 아무 숫자, 값 넣음 -> update 할때는 이것을 update 함
+				res = stmt.executeUpdate(query);
+				
+				
+				query = "insert into owner values (" + lastNum + ", '"
+						+ fname.substring(0,1) + "', '"
+						+ fname.substring(1,3) + "', '"
+						+ phone + "', '" + email + "', '"
+						+ gender + "', " + age + ")";
+				
+				res = stmt.executeUpdate(query);
+				
+				conn.commit();//transaction 추가
+				conn.setAutoCommit(true);
+				
+				out.println("<script type='text/javascript'>");
+				out.println("alert('회원가입완료');");
+				out.println("history.go(-2);");
+				out.println("alert('회원가입완료');");
+				out.println("</script>");	
 			}
-			lastNum++;
-			//store 에 미리 breg_number 추가 -> 무결성 위약조건 때문에
-			query = "insert into store values (" + lastNum
-					+ ", 'k', 'k', 44, 'k')"; // 일단 아무 숫자, 값 넣음 -> update 할때는 이것을 update 함
-			res = stmt.executeUpdate(query);
 			
+			catch(Exception e){
+				conn.rollback(); //trnasaction rollback 추가
+				e.printStackTrace();
+			}
 			
-			query = "insert into owner values (" + lastNum + ", '"
-					+ fname.substring(0,1) + "', '"
-					+ fname.substring(1,3) + "', '"
-					+ phone + "', '" + email + "', '"
-					+ gender + "', " + age + ")";
-			
-			res = stmt.executeUpdate(query);
-			stmt.close();
-			conn.close();
-			
-			out.println("<script type='text/javascript'>");
-			out.println("alert('회원가입완료');");
-			out.println("history.go(-2);");
-			out.println("alert('회원가입완료');");
-			out.println("</script>");
-			
+			finally{
+				stmt.close();
+				conn.close();
+			}
 		}
 		rs.close();
 
