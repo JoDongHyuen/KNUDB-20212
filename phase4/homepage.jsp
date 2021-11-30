@@ -67,7 +67,7 @@
 		</div>
 	</div>
 	<div id="info1">
-<center> <h2> 최악의 가게 소개</h2> </center>
+<div style="text-align:center;"><h2> 최악의 가게 소개</h2></div>
 <%
 	String serverIP = "localhost";
 	String strSID = "orcl";
@@ -126,7 +126,7 @@
 
 </div>
 		<div id="info2">
-		<center> <h2>가장 비싼 음식 소개</h2> </center>
+		<div style="text-align:center;"><h2>가장 비싼 음식 소개</h2></div>
 <%
 	sql = "select f.food_name, o.country_name, f.price from food f, origin o where f.id = o.id and f.price =(   select max(price)     from food )";		
 	ps = conn.prepareStatement(sql);
@@ -164,7 +164,7 @@
 
 </div>
 		<div id="info3">
-		<center> <h2>최고 평점 음식 소개</h2></center>
+		<div style="text-align:center;"><h2>최고 평점 음식 소개</h2></div>
 <%
 	sql = "select distinct f.food_name, f.price, r.score from food f, rating r where f.bnum = r.bnum and r.score in("
 			+ "select max(score)    from rating " + "group by r.bnum)";	

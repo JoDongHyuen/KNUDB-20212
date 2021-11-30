@@ -13,10 +13,10 @@ body{
 <link rel="stylesheet" href="css/custom.css">
 </head>
 <body>
-<center>
+<div align="center">
 	<h1>회 원 가 입</h1>
 	<form action = "registerCheck.jsp" method = "post">
-		<table border = "1" width = "600" height = "150" bgcolor = 95f3c7>
+		<table border = "1" style="width:600px; height=150px; background-color:#95f3c7;">
 			<tr>
 				<td> 고객 / 점주 </td>
 				<td><input type = "radio" name = "typeOfP" value = "customer" checked="checked" /> 고객
@@ -85,7 +85,7 @@ body{
 	</form>
 
 
-</center>
+</div>
 
 
 </body>

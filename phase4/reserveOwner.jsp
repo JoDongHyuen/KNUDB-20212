@@ -14,7 +14,7 @@ background-color: #fff4e8;
 <title>Insert title here</title>
 </head>
 <body>
-<center>
+<div align="center">
 <h2>점주님의 음식점을 예약한 사람들의 목록입니다.</h2>
 <table class="type11">
 <%
@@ -71,8 +71,9 @@ background-color: #fff4e8;
 		out.println("<td>" + rs.getString(5) + "</td>");
 		out.println("</tr>");
   	}
-	out.println("</table>");
-
+  	%>
+	</table>
+<%
 	rs.close();
 	stmt.close();
 	conn.close();
@@ -80,6 +81,6 @@ background-color: #fff4e8;
 <br/><br/><br/>
 <button type = "button" class="snip1535" onClick="location.href='homepage.jsp'"> 뒤로가기 </button>
 <br/><br/><br/> https://nanati.me/html_css_table_design/ 에서 표 디자인 가져옴
-</center>
+</div>
 </body>
 </html>

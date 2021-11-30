@@ -16,9 +16,9 @@ background-color: #e0fdff;
   </head>
   <body>
   <form action="reservation.jsp" method="post"> 
-  <center>
+  <div style="text-align:center;">
 	<h2> 음식점을 고른 후 예약 시간을 정하고 예약 버튼을 누르세요</h2>
-	</center>
+	</div>
 	<br/>
 	<br/>
     <%
@@ -68,7 +68,7 @@ background-color: #e0fdff;
 <br/>
 15:41:35-->
 
-<center>
+<div style="text-align:center;">
 <br/>
 시간을 입력하세요 (24시간 기준 오후3시 -> 15시)
 <br/>
@@ -85,7 +85,7 @@ background-color: #e0fdff;
 <button type = "button" class="snip1535" onClick="location.href='reserveCustomer.jsp'"> 뒤로가기 </button>
 		<br/>
 <br/><br/><br/> https://nanati.me/html_css_table_design/ 에서 예약 버튼 디자인 가져옴
-</center>
+</div>
 </form>
   </body>
 </html>

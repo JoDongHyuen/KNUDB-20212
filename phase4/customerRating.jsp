@@ -16,7 +16,7 @@ background-color: #F8FFE0;
 <body>
  <form action="searchRatingRestaurant.jsp" method="post"> 
 
-<center>
+<div align="center">
 <h1> 평점 매기기</h1>
 	<br/>
 	<h2> 내가 쓴 평점들</h2>
@@ -62,10 +62,11 @@ background-color: #F8FFE0;
 		out.println("<td>" + rs.getString(3) + "</td>");
 		out.println("<td>" + rs.getDouble(4) + "</td>");
 		out.println("</tr>");
-  	}
-	out.println("</table>");
-	out.println("<br/>");
-	out.println("<br/>");
+  	} %>
+	</table>
+	<br/>
+	<br/>
+	<%
 	rs.close();
 	pstmt.close();
 	conn.close();
@@ -80,9 +81,7 @@ background-color: #F8FFE0;
 -->
 <br/><br/><br/> https://nanati.me/html_css_table_design/ 에서 표 디자인 가져옴
 <br/>https://nanati.me/css-button-design/ 에서 검색 디자인 가져옴
-
-
-</center>
+</div>
 </form>
 </body>
 </html>

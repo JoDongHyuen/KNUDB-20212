@@ -26,10 +26,10 @@ body{
 
 <body>
 
-	<center>
+	<div style="text-align:center;">
 		<h1>고객 정보 수정</h1>
 		<form method="post" action="updateCustomer_ok.jsp">
-			<table border = "1" width = "600" height = "150" bgcolor = 95f3c7>
+			<table border = "1" style="width:600px; height=150px; background-color:#95f3c7;">
 				<tr>
 					<td>이름</td> 
 					<td><input type="text" name="name" placeholder="이름" value="<%=fname%><%=lname%>"></td>
@@ -57,6 +57,6 @@ body{
 	<br><br><br>
 	
 		<br/><br/> https://nanati.me/html_css_table_design/ 에서 검색 디자인 가져옴	
-	</center>
+	</div>
 </body>
 </html>

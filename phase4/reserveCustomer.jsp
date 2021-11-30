@@ -15,7 +15,7 @@ background-color: #f9edff;
 </head>
 <body>
 <form action = "searchRestaurant.jsp" method = "post">
-<center>
+<div align="center">
 <table class="type11">
   <%
   String serverIP = "localhost";
@@ -87,7 +87,7 @@ background-color: #f9edff;
 <br/><br/><br/> https://nanati.me/html_css_table_design/ 에서 표 디자인 가져옴
 <br/>https://nanati.me/css-button-design/ 에서 검색 디자인 가져옴
 
-</center>
+</div>
 </form>
 </body>
 </html>

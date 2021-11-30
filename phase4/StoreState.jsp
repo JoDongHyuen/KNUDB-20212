@@ -167,8 +167,6 @@
 						<input type="submit" value="¼öÁ¤" class="btn">
 					</form>
 					
-				</body>
-				
 				<div class="food_drink">
 					<table class="frm_food">
 							<tr>
@@ -241,4 +239,5 @@
 		frm.submit(); 
 	} 
 </script>
+</body>
 </html>
