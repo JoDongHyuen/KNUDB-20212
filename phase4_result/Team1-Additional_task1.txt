@@ -1,0 +1,46 @@
+동시성 제어 해결 방법
+
+예약을 할 때, 좌석수를 넘어가면 예약이 안되도록 설정을 하였습니다.
+
+저희 팀에서 store.seats_number 에 좌석수가 정해져 있습니다.
+select 문으로 seats_number 을 읽어옵니다.
+
+cust_books_str 은 고객이 가게에 예약 되어 있는 상태를 보여주는 테이블입니다
+cust_books_str 에서 헤당 가게 bnum 을 입력하면 몇개의 예약이 있는지 counting을 합니다.
+
+그 counting 과 seats_number 를 비교하여
+counting 의 갯수(현재 가게에 예약되어 있는 고객의 수)가 seats_number 보다 적으면 예약이 가능하도록 설정하였고, 같거나 많으면 헤당 가게에 예약이 꽉 찼습니다. 라는 메세지를 띄우도록 설정하였습니다.
+
+아래에 코드를 첨부하였습니다.
+
+
+try{
+			if(num <= seatNum){ // 좌석수 >= 예약 -> ok
+				stmt.executeUpdate(sql);
+			}
+			else{ // 예약이 안되도록
+				conn.rollback();
+				throw new SQLException();
+			}
+			
+			out.println("<script type='text/javascript'>");
+			out.println("alert('예약되었습니다!!');");
+			out.println("</script>");
+			
+			response.sendRedirect("reserveCustomer.jsp");
+			
+		}catch (Exception e){
+			conn.rollback();
+			out.println("<script type='text/javascript'>");
+			out.println("alert('해당 가게의 예약이 찼습니다.');");
+			out.println("history.back();");
+			out.println("</script>");
+
+			e.printStackTrace();
+		}finally{
+			
+			stmt.close();
+			//pstmt.close();
+			rs.close();
+			conn.close();
+		}		
