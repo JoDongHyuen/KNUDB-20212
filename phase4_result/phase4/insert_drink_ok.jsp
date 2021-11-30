@@ -47,7 +47,7 @@
 	ps.setInt(5, d_price);
 	ps.executeUpdate();
 
-	response.sendRedirect("modify_drink.jsp");
+	response.sendRedirect("StoreState.jsp");
 %>
 <%=bnum %>
 <%=d_id %>

@@ -40,7 +40,7 @@
 	ps.setInt(4, d_id);
 	int res = ps.executeUpdate();
 	
-	response.sendRedirect("modify_drink.jsp");
+	response.sendRedirect("StoreState.jsp");
 %>
 
 </body>

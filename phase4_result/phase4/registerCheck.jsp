@@ -156,7 +156,6 @@
 			script.println("<script type='text/javascript'>");
 			script.println("alert('회원가입완료');");
 			script.println("history.go(-2);");
-			script.println("alert('회원가입완료');");
 			script.println("</script>");
 		}
 		else{
@@ -184,7 +183,7 @@
 				query = "insert into owner values (" + lastNum + ", '"
 						+ fname.substring(0,1) + "', '"
 						+ fname.substring(1,3) + "', '"
-						+ phone + "', '" + null + "', '"
+						+ phone + "', '" + email + "', '"
 						+ gender + "', " + age + ")";
 				
 				res = stmt.executeUpdate(query);

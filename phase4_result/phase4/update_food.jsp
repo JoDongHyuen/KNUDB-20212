@@ -45,7 +45,7 @@
 	ps.setInt(2, f_id);
 	ps.executeUpdate();
 
-	response.sendRedirect("modify_food.jsp");
+	response.sendRedirect("StoreState.jsp");
 %>
 </body>
 </html>
