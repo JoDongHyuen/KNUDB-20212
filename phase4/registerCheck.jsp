@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ page language = "java" import = "java.text.*, java.sql.*, java.util.*" %>
+<%@ page import="java.io.PrintWriter" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +10,7 @@
 </head>
 <body>
 <%
+	PrintWriter script = response.getWriter();
 
 	String serverIP = "localhost";
 	String strSID = "orcl";
@@ -69,67 +71,67 @@
 	
 	if(flag == 1){
 		
-		out.println("<script type='text/javascript'>");
-		out.println("alert('이메일 중복됩니다. 사용불가능.');");
-		out.println("history.back();");
-		out.println("</script>");		
+		script.println("<script type='text/javascript'>");
+		script.println("alert('이메일 중복됩니다. 사용불가능.');");
+		script.println("history.back();");
+		script.println("</script>");		
 		
 		session.setAttribute("flag", flag);
 		//response.sendRedirect("register.jsp");
 	
 	}
 	else if(flag == 8){
-		out.println("<script type='text/javascript'>");
-		out.println("alert('비밀번호를 입력하세요');");
-		out.println("history.back();");
-		out.println("</script>");
+		script.println("<script type='text/javascript'>");
+		script.println("alert('비밀번호를 입력하세요');");
+		script.println("history.back();");
+		script.println("</script>");
 	}
 	else if(flag == 2){
-		out.println("<script type='text/javascript'>");
-		out.println("alert('이메일을 입력해주세요!');");
-		out.println("history.back();");
-		out.println("</script>");		
+		script.println("<script type='text/javascript'>");
+		script.println("alert('이메일을 입력해주세요!');");
+		script.println("history.back();");
+		script.println("</script>");		
 		
 		
 		//response.sendRedirect("register.jsp");
 		
 	}
 	else if(flag == -1){
-		out.println("<script type='text/javascript'>");
-		out.println("alert('이메일 형식에 맞지 않습니다!');");
-		out.println("history.back();");
-		out.println("</script>");	
+		script.println("<script type='text/javascript'>");
+		script.println("alert('이메일 형식에 맞지 않습니다!');");
+		script.println("history.back();");
+		script.println("</script>");	
 		
 	}
 	else if(flag == 3){
-		out.println("<script type='text/javascript'>");
-		out.println("alert('이름을 입력하세요!');");
-		out.println("history.back();");
-		out.println("</script>");
+		script.println("<script type='text/javascript'>");
+		script.println("alert('이름을 입력하세요!');");
+		script.println("history.back();");
+		script.println("</script>");
 	}
 	else if(flag == 4){ // 그냥 일단 놔둠 필요없긴한데
-		out.println("<script type='text/javascript'>");
-		out.println("alert('이름을 입력하세요!');");
-		out.println("history.back();");
-		out.println("</script>");
+		script.println("<script type='text/javascript'>");
+		script.println("alert('이름을 입력하세요!');");
+		script.println("history.back();");
+		script.println("</script>");
 	}
 	else if(flag == 5){
-		out.println("<script type='text/javascript'>");
-		out.println("alert('나이를 입력하세요!');");
-		out.println("history.back();");
-		out.println("</script>");
+		script.println("<script type='text/javascript'>");
+		script.println("alert('나이를 입력하세요!');");
+		script.println("history.back();");
+		script.println("</script>");
 	}
 	else if(flag == 6){
-		out.println("<script type='text/javascript'>");
-		out.println("alert('전화번호를 입력하세요!');");
-		out.println("history.back();");
-		out.println("</script>");
+		script.println("<script type='text/javascript'>");
+		script.println("alert('전화번호를 입력하세요!');");
+		script.println("history.back();");
+		script.println("</script>");
 	}
 	else if(flag == 7){
-		out.println("<script type='text/javascript'>");
-		out.println("alert('비밀번호가 일치하지 않습니다');");
-		out.println("history.back();");
-		out.println("</script>");
+		script.println("<script type='text/javascript'>");
+		script.println("alert('비밀번호가 일치하지 않습니다');");
+		script.println("history.back();");
+		script.println("</script>");
 	}
 	else{
 		email = " " + email;
@@ -151,11 +153,11 @@
 			stmt.close();
 			conn.close();
 			
-			out.println("<script type='text/javascript'>");
-			out.println("alert('회원가입완료');");
-			out.println("history.go(-2);");
-			out.println("alert('회원가입완료');");
-			out.println("</script>");
+			script.println("<script type='text/javascript'>");
+			script.println("alert('회원가입완료');");
+			script.println("history.go(-2);");
+			script.println("alert('회원가입완료');");
+			script.println("</script>");
 		}
 		else{
 			conn.setAutoCommit(false);//transaction 추가
@@ -182,7 +184,7 @@
 				query = "insert into owner values (" + lastNum + ", '"
 						+ fname.substring(0,1) + "', '"
 						+ fname.substring(1,3) + "', '"
-						+ phone + "', '" + email + "', '"
+						+ phone + "', '" + null + "', '"
 						+ gender + "', " + age + ")";
 				
 				res = stmt.executeUpdate(query);
@@ -190,26 +192,29 @@
 				conn.commit();//transaction 추가
 				conn.setAutoCommit(true);
 				
-				out.println("<script type='text/javascript'>");
-				out.println("alert('회원가입완료');");
-				out.println("history.go(-2);");
-				out.println("alert('회원가입완료');");
-				out.println("</script>");	
+				script.println("<script type='text/javascript'>");
+				script.println("alert('회원가입완료');");
+				script.println("history.go(-2);");
+				script.println("</script>");
+				script.flush();
 			}
 			
 			catch(Exception e){
 				conn.rollback(); //trnasaction rollback 추가
+				script.println("<script type='text/javascript'>");
+				script.println("alert('회원가입실패');");
+				script.println("history.go(-1);");
+				script.println("</script>");
+				script.flush();
 				e.printStackTrace();
 			}
 			
 			finally{
 				stmt.close();
 				conn.close();
+				rs.close();
 			}
 		}
-		rs.close();
-
-		response.sendRedirect("homepage.jsp");
 	}
 	
 	
