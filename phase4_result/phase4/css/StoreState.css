@@ -1,0 +1,61 @@
+.frm{
+	padding-left: 10%;
+	margin-top: 50px;
+}
+
+a.logo2 {
+	height: 30px;
+	color: #ffffff;
+	text-decoration: none;
+	font-size: 30px;
+	text-transform: capitalize;	
+}
+
+.location{
+	height: 50px;
+	width: 300px;
+	padding-left: 15px;
+}
+
+.txt{
+	height: 45px;
+	width: 120px;
+	padding-left: 15px;
+}
+
+.btn{
+	width: 70px;
+	height: 46px;
+	background: #339CE5;
+	border: 1px solid #78C7FE;
+	box-sizing: border-box;
+}
+
+.btn_insert{
+	width: 100px;
+	height: 46px;
+	background: #339CE5;
+	border: 1px solid #78C7FE;
+	box-sizing: border-box;
+}
+
+.frm_store{
+	margin-top: 50px;
+	margin-left: 100px;
+}
+.frm_food{
+	margin-top: 50px;
+	margin-left: 100px;
+}
+.frm_drink{
+	margin-top: 50px;
+	margin-left: 100px;
+}
+
+.frm_store tr{
+	margin-bottom: 15px;
+}
+
+.btn_insert{
+	margin-left: 100px;
+}
